@@ -1,0 +1,89 @@
+Day - 1     (5/4/2021)
+----------------------------------------------------------------------
+Assignment:  (StatementUpdateDemo.java)
+-----------------------------------------
+update the salary of the employee that you have inserted already.
+empno : <<  your employee number >>
+new salary : << any amount >>
+
+
+Assignment:  (StatementDeleteDemo.java)
+-------------------------------------------
+delete the employee that you have entered already through your previous program.
+empno : << your employee number >>
+Assignment  (PreparedStatementUpdateDemo.java)
+Assignment  (PreparedStatementDeleteDemo.java)
+
+
+
+
+
+Day - 2     (8/4/2021)
+------------------------------------------------------------------
+write a jdbc program to return the length of the given string.
+
+write a jdbc program to return all employees in the descending order of their
+salary who are working in department 50.
+
+How do you create a result set using which we can traverse it in reverse direction.
+
+Create a multi-layered application "Book Store Management" for "Alpha Books".
+The application designed should be capable of 
+    adding a new Book
+    modifying price of an existing book
+    deleting a book
+    list all books
+    list costly books       (whose cost is more than 500)
+
+Book entity
+    ISBN, title, author, price, yearPublished
+
+
+
+
+Day - 3         (git)
+-----------------------------------------------
+1) In eclipse, create a maven project. (SampleProject)
+2) write a hello world program in src/main/java
+3) create a new git hub repository with the name "Sample Repository"
+4) push your eclipse project (Sample Project) into github remote repository
+   ("Sample Repository")
+
+
+Day - 8
+----------------------------------------------
+Hibernate Assignment for 1:M and M:1 (bi-directional)
+
+create necessary tables first in the oracle.
+correspondingly design your java classes.
+
+department  1:M    employee
+employee    M:1      department
+
+Department
+    deptId, deptName, loc
+Employee
+    empId, fullName, dateJoined, salary
+
+1) write a program to persist data.
+2) write a retrieval program to find all employees working in a particular
+department.
+
+Day - 9 
+----------------------------------------------
+contact-management-system2
+    include JPA-Hibernate implementation.
+
+    don't modify the Contact class.
+    copy the Contact class and name it as "ContactEntity".
+    ContactEntity class, add necessary annotations.
+
+    
+
+bookstore-managment-system2
+    include JPA-Hibernate implementation.
+
+
+
+
+

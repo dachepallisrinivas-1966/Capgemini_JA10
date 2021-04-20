@@ -1,0 +1,81 @@
+CREATE SEQUENCE hibernate_sequence;
+
+CREATE TABLE laptops
+(laptop_id number(19)    CONSTRAINT laptops_laptop_id_pk PRIMARY KEY,
+ brand     varchar2(10)  CONSTRAINT laptops_brand_nn     NOT NULL,
+ price     number(19,2) CONSTRAINT laptops_price_chk    CHECK (price >= 15000)
+);
+
+INSERT  INTO laptops (laptop_id, brand, price) 
+VALUES (1, 'Lenovo', 43000.0);
+
+INSERT  INTO laptops (laptop_id, brand, price) 
+VALUES (2, 'HP', 40000.0);
+
+INSERT  INTO laptops (laptop_id, brand, price) 
+VALUES (3, 'Dell', 47900.0);
+
+
+CREATE TABLE emps
+(emp_id    number(19)   CONSTRAINT emps_emp_id_pk       PRIMARY KEY,
+ full_name varchar2(30) CONSTRAINT emps_full_name_nn    NOT NULL,
+ mobile    varchar2(10) CONSTRAINT emps_mobile_un       UNIQUE,
+ laptop_id number(19)   CONSTRAINT emps_laptop_id_fk    REFERENCES   laptops(laptop_id)
+);
+
+
+INSERT INTO emps (emp_id, full_name, mobile, laptop_id)
+VALUES (1, 'Srinivas Dachepalli', '924175823', 3);
+
+INSERT INTO emps (emp_id, full_name, mobile, laptop_id)
+VALUES (2, 'Sreeja Kancharla', '924175822', 1);
+
+INSERT INTO emps (emp_id, full_name, mobile, laptop_id)
+VALUES (3, 'Aksheya Swamy', '924175821', 2);
+
+COMMIT;
+
+----------------------------------------------------------------------------------------------------------
+
+CREATE TABLE courses
+(cid     number(19)   CONSTRAINT courses_cid_pk   PRIMARY KEY,
+ cname   varchar2(30) CONSTRAINT courses_cname_nn NOT NULL,
+ fee     number(19)   CONSTRAINT courses_fee_chk  CHECK (fee >= 0)
+);
+
+INSERT INTO courses (cid, cname, fee) 
+VALUES (1, 'oracle', 5000);
+
+INSERT INTO courses (cid, cname, fee) 
+VALUES (2, 'core java', 6500);
+
+CREATE TABLE students
+(sid     number(19)   CONSTRAINT students_sid_pk    PRIMARY KEY,
+ sname   varchar2(30) CONSTRAINT students_sname_nn  NOT NULL,
+ cid     number(19)   CONSTRAINT students_cid_fk    REFERENCES  courses(cid)
+);
+
+INSERT INTO students (sid, sname, cid) 
+VALUES   (1, 'Srinivas', 2);
+
+INSERT INTO students (sid, sname, cid)
+VALUES   (2, 'Divya', 2);
+
+INSERT INTO students (sid, sname, cid)
+VALUES   (3, 'Keerti', 2);
+
+INSERT INTO students (sid, sname, cid)
+VALUES   (4, 'Kapil', 1);
+
+INSERT INTO students (sid, sname, cid)
+VALUES   (5, 'Vivek', 1);
+
+COMMIT;
+
+
+
+
+
+
+ 
+ 

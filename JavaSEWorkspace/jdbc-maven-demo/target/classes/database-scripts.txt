@@ -1,0 +1,7 @@
+CREATE TABLE emp111
+(empno  number(3),
+ ename  varchar(20),
+ doj    date,
+ salary number(7,2)
+ );
+ 

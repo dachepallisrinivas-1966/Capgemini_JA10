@@ -1,0 +1,869 @@
+Srinivas Dachepalli | 6305 730 633 | dachepallisrinivas@gmail.com
+Batch Code  :   JA-10 & JA-11
+Start Date  :   05-Apr-2021     
+Start Topic : From JDBC
+
+CR  |   anupam singh panwar |   8178434266
+CR  |   Pankhuri Srivastava |   8447630806
+
+
+Day - 1         (5/4/2021)
+---------------------------------------------------------------
+Mutli-Layered Architecture
+----------------------------
+service         business logic
+dao             data access
+presentation    input / output
+DTO (data transfer object) 
+
+
+model or bean or DTO (data transfer object) or POJO  (plain old java object) 
+or class.
+
+
+                                JDBC
+                                ----
+JDBC stands for Java Database Connectivity.
+
+Java can store data permanantly.
+Student
+    10 student objects.
+    serialization and deserialization   (IOStreams)
+
+Java    
+    can understand only objects
+Database
+    can understand only tables, rows, columns.
+
+    Database Vendors
+    Oracle          Propertiery Product
+    MySQL           Open Source
+    MS SQL Server
+    PostGre SQL
+    SQLite
+    so many..
+
+    DB Vendors Provided some java programs to talk with Java applications.
+    JDBC Drivers - available in the form of ".jar" files.
+        Oracle  -   JDBC Driver for oracle
+        MySQL   -   JDBC Driver for MySQL
+
+jar (java archieve file) :
+    collection of .class files.
+
+
+    program to interface concept
+    ----------------------------
+    Java people offer few interfaces.
+    this is known as JDBC API.(packages, interfaces etc.,)
+
+    all JDBC drivers provide implementation of JDBC API.
+
+method-1
+----------
+1. download jdbc driver jar files from the database vendors.
+2. add these jar files into your project.   ("lib" folder)
+3. add the lib folder to the build path.
+
+method-2    (using MAVEN)
+-----------------------------
+
+    Build tools like - 
+        Maven, Gradle
+
+    Advantages of Maven
+
+    dependencies
+        oracle jdbc driver dependency
+        (xml)
+    jar files are downloaded automatically from 
+    maven central repository.
+
+maven project:
+------------------
+src/main/java       -   java 
+src/main/resources  -   non-java files
+src/test/java       -   junit test cases
+src/test/resources  -   non-java files used in testing
+pom.xml             -   pom stands for (Project Object Model)
+                        contain all dependencies.
+
+JDBC API   (java.sql)
+---------------------------
+1. register the jdbc driver class   (from java 8 this step is optional)
+        Class.forName("drive-name");
+2. establish Connection
+        DriverManager.getConnection("connection-string-url","user-name","pass-word")
+3. execute queries (DDL, DML)
+4. close the Connection
+
+try-with-resources:
+----------------------
+resources (database connection, files e3tc.,) are opened and closed automatically.
+
+try ( // open any resource) {
+
+} catch() {
+
+}
+
+the resource we are trying to open must be inherited from AutoClosable interface.
+eg: java.sql.Connection extends AutoClosable
+
+
+1) Connection interface
+        Statement           createStatement()
+        PreparedStatement   prepareStatement(sql)
+        CallableStatement   prepareCall(sql)
+
+2) DriverManager class
+        getConnection()
+3) DatabaseMetaData interface
+        getDatabaseProductName()
+        getDatabaseProductVersion()
+
+connection once opened, should be closed. or else it causes memory-leaks.
+
+4) Statement interface
+    - Used to execute normal SQL queries.
+        +   executeUpdate(sql)
+        +   ResultSet executeQuery(sql)
+
+2) PreparedStatement  interface   
+    -   Used to execute dynamic or parameterized SQL queries.
+        +   executeUpdate()
+        +   ResultSet executeQuery()
+
+3) CallableStatement  interface
+    –  Used to execute the stored procedures.
+
+    SQL is a language, that is used in all rdbms products.
+    rdbms products - oracle, mysql, ms sql server, postgre sql, sqllite,
+                    db2 etc.,
+
+4) ResultSet interface
+        +   next()
+        +   previous()
+
+
+Day - 2     (8/4/2021)
+------------------------------------------------------------------
+write a jdbc program to return the length of the given string.
+
+
+    Statement	                                PreparedStatement	                  CallableStatement
+----------------------------------------------------------------------------------------------------------------------------    
+It is used to execute normal 	It is used to execute parameterized or 	    It is used to call the stored procedures,
+SQL queries.                    dynamic SQL queries                         stored functions.
+
+It is preferred when a          It is preferred when a particular query     
+particular SQL query is         is to be executed multiple times.           
+to be executed only once.	 	
+
+You cannot pass the             You can pass the parameters to SQL query    You can pass 3 types of parameters
+parameters to SQL query         at run time.                                They are – IN, OUT and IN OUT.
+using this interface.	   	  
+
+The performance of this         The performance is good. (when used for     The performance of this interface is high.
+interface is very low.	        multiple execution of same query). -
+                                pre-compiled sql commands
+
+ResultSet interface:
+    it is used to capture data coming from database as a result of SELECT
+    statement.
+
+write a jdbc program to display all rows in the jobs table.
+
+
+ResultSet   
+    is by default read-only and forward only.
+    we can change the behaviour of the result set.
+    (Statement interface)
+
+
+
+                                    Multi-Layered Architecture
+                                    ---------------------------
+                        Contact Management System Case Study  (CRUD Application)
+
++ coding standards
+        indentation, naming conventions, comments
++ program-to-interface  
+        loosely coupling architecture
++ packages
+    + entity
+    + service
+    + dao
+    + ui
+    + exception
+    + util
+
++ global exception handling
+
++ single ton design pattern
+    + it make sure that through out the application only one object is created.
+    + this object is shared among different programs in the application.
+    + to establish database connection, we will follow this design pattern.
++ factory design pattern
+    + each program do not need to create an object.
+    + rather a program can ask for an object to the factory.
+    + the factory will provide an object.
++ DAO design pattern
+    + to isolate all database operations in a separate layer.
+    + one interface and one (or more) implementations.
+
+
+1. create the maven project and include all the necessary dependencies.
+2. create necessary tables and fill with meaningful information in database.
+3. we also recorded all the sql commands in a file database-scripts.txt and that is
+   available in src/main/resources.
+
+            UI <-> Service <-> DAO <-> DB
+
+4. exceptions must be handled only in the UI layer.
+
+    checked exception
+        a) if the exception class is NOT inherited from java.lang.RuntimeException class
+        b) we must handle these exceptions using try..catch
+
+    unchecked exception
+        a) if the exception class is inherited from java.lang.RuntimeException class
+        b) should not be handled by the programmer using try..catch
+        c) rather you should avoid these exceptions by writing "Defensive Programming".
+
+
+4. we need to create our entity class.
+    entity classes must be inherited from java.io.Serializable interface.
+    instead of primitive data types, use wrapper classes for all the data members.
+    id's are generally declared as Long datatype.
+    every class should have default constructor.
+    include parameter constructors, setters and getters, toString() with String.format
+    (not String concatenation)
+
+5.  dao layer - all persistence logic go here. 
+    dao interface
+    dao implementation
+
+6.  service layer - all business logic (such as validations, computations) go here.
+    if the object is valid, then call the corresponding DAO method.
+    service interface
+    service implementation
+
+7. presentation (ui) layer
+        enum to hold menu options
+        main method
+
+
+Day - 3     (9-apr-21)
+--------------------------------------------------------------
+1) GIT -   Source Code Repository tool
+
+2) SONAR Lint (plug in) or SONAR QUBE (web environment):
+        Code Quality Analysis Tool
+
+
+
+Day - 6    (10-apr-21)     [Saturday]
+-------------------------------------------------------------  
+
+Interface       :   JPA     (set of specifications)     : java people
+                (Java Persistence API)
+
+                javax.persistence package
+
+Implementations :   Hibernate, TopLink, EclipseLink, OpenJPA
+                Hibernate is very popular
+
+configuration   : using xml
+convention      : using annotations
+
+What is ORM?
+    ORM stands for Object Relational Mapping.
+    It remove all impedence (paradigm) mismatches 
+        -   granularity
+        -   inheritance
+        -   identity
+        -   associations
+    A query language.   (ORM will never work on SQL)
+        -   JPA offer a query language known as 
+            JPQL (Java Persistence Query Language)
+            JPQL work on objects.
+
+            SQL : SELECT * FROM employees_table;
+            JPQL : SELECT * FROM Employee_class;
+
+ORM Frameworks?
+    Hibernate is most popular ORM Framework.
+
+persistence.xml
+    hbm2ddl : update | create | validate | create-drop
+        update : if the table is there, it is used otherwise table is created.
+        validate : no tables are created. tables must be present in the database.
+
+
+JPA Hiberenate Annotations:
+1) @Entity
+2) @Table
+3) @Column
+
+4) @Id
+5) @GeneratedValue
+        strategy    -  AUTO, IDENTITY, TABLE, SEQUENCE
+
+entity : objects of this class is to be stored in the database
+    (Customer)
+model : objects of this class will not be stored in the database
+    (Address)
+
+EntityManager methods:
+-----------------------
+1) perist(object)   : to save an object into database.
+2) find(class, id)  : to retrieve information for a given id.
+3) remove(object)   : to remove an object
+4) merge(object)    : to modify an object
+
+Has-A relationship:
+-----------------------
+a) composition:
+    if object of one class become part of another class.
+
+5) @Embedded
+6) @Embeddable
+
+b) association
+
+one-to-one association
+    Employee     1:1     Laptop
+    both classes will exist independently.
+
+one-to-many association
+    Department   1:M     Employees
+many-to-one association
+    Employee     M:1     Department
+many-to-many association        (NOT RECOMMENDED)
+    ARTIST       M:N     MOVIE
+
+
+FETCHING STRATEGIES:
+-------------------------
+1) EAGER FETCHING       (one-to-one mapping, it is the default)
+2) LAZY FETCHING        (one-to-many / many-to-one, it is the default)
+
+CASCADING STRATEGIES:
+-------------------------
+1) PERSIST, MERGE, REMOVE, ALL, NONE
+
+    these strategies will work for bi-directional associations.
+
+Day - 7  (hibernate-2)
+----------------------------------------------
+
+One-To-One
+1) uni-directional
+    employee   ----     laptop
+2) bi-directional
+    employee   ----     laptop
+    laptop     ----     employee
+
+One-To-many and Many-To-One
+----------------------------
+Course - 1 : M - Student
+Student - M : 1 - Course
+
+Many-To-Many
+--------------------------
+Artist - M:N - Movie
+
+But it is seriously discouraged as per the DBMS standards.
+
+To handle many side, we need to use a collection (List / Set)
+In Course class, we have to use List<Student> or Set<Student>
+
+
+Day - 8         (hibernate-3)
+---------------------------------------------------------
+
+Is-A relationship:
+    inheritance
+
+Employee            (1)
+    empId, ename
+Manager             (2)
+    bonus
+ContractEmployee    (3)
+    payRate
+
+inheritance strategies:
+-------------------------
+a) SINGLE TABLE
+        table : all_employees
+        discriminator column : empType
+        discriminator column type : CHAR, STRING, INTEGER
+
+        empId, ename,       bonus,  payRate, emp_type
+        101     srinivas                        E
+        102     divya       15000               M
+        103     ramesh                750       C
+
+
+b) JOINED           (Preferred Strategy)
+        
+        while retrieving data, it used JOINS.
+        foreign keys are created.
+
+        table : emps2
+        empId(p)   ename
+        101     srinivas
+        102     divya
+        103     ramesh
+
+        table : mgr2
+        empId(f)   bonus
+        102     15000
+
+        tbale : cemp2
+        empId(f)   pay_rate
+        103     750
+
+
+c) TABLE PER CLASS      
+
+        while retrieving data, it used UNION.
+        no foreign keys are created.
+        they are treated as independent tables.
+
+        table : emps3`
+        empId   ename
+        101     srinivas
+
+        table : mgr3
+        empId   ename   bonus
+        102     divya   15000
+
+        table : cemp3
+        empId   ename   pay_rate
+        103     ramesh        750
+
+
+JPQL:
+    typed query
+    positional parameter
+    named parameter
+    WHERE keyword
+    BETWEEN keyword
+    named queries
+    named query
+
+    getResultList()
+    getSingleResult()
+
+    joins 
+
+
+Day - 9 (Spring)
+--------------------------------------------------------------------
+Struts, JSF   other JAVA EE frameworks.
+
+What is Spring?
+    It is a development platform.
+
+pre-requiste?
+    POJO    (plain old java object)
+    class
+
+Coupling (dependence) and Cohesion (relevance)
+    
+    looslely coupled
+    high cohesion
+
+    Service ->  CollectionImpl
+                IOStreamImpl
+                JDBCImpl
+                JPAImpl
+
+    Dao -> IOStreamImpl
+    Service -> constructor -> service = // new CollectionImpl();
+                                            new IOStreamImpl()
+
+    Dao -> JDBCImpl
+    Service -> constructor -> service = // new CollectionImpl();
+                                        // new IOStreamImpl()
+                                        new JDBCImpl()
+    Dao -> JPAImpl
+    Service -> constructor -> service = // new CollectionImpl();
+                                        // new IOStreamImpl()
+                                        // new JDBCImpl()
+                                        new JPAImpl()
+
+multi-layered Architecture
+    maintainability
+
+JPA Hibernate Framework
+    db configurations : src/java/resources -> META-INF/peristance.xml
+    
+    configuration       vs          convention               vs       programmatic
+    (xml)                           (annotations)
+    xml configuration   vs  annotation based configuration   vs  java based configuration
+                        
+    uniformity
+
+    Runtime engine  (HRS - Hibernate Runtime System)
+
+IoC and DI:
+-----------
+IoC     stands for Inversion of Control 
+IoC is a design pattern.
+
+    Don't call us. We will call you.
+
+Spring Container will create objects. Program can make use of these objects.
+Object life cycle is maintained by the Spring Container.
+
+
+DI      dependency injection 
+        is a way of implementing IoC pattern.
+
+Employee
+    Laptop  (dependecncy)
+
+    created one laptop object.
+    created one employee object.
+    assign the laptop object to employee object.
+
+Ask spring container to give an employee object.
+you will be given not only the employee object but also a laptop object
+associated to that employee object.
+
+service -> layer depend on dao layer
+
+container will create an object with all necesary dependent objects.
+
+dependencies
+        related to some service related stuff.
+
+BeanCreationException:
+    When Container cannot create a bean, it will return this exception.
+
+Note:
+    Spring Container create by default only one instance for a bean.
+    (SingleTon)
+    the same instance is returned every time we use context.getBean()
+
+
+Spring Containers:
+--------------------------
+BeanContainer interface         : light-weight applications
+AbstractApplicationContext interface
+    +   ApplicationContext interface    : enterprise-level applications
+            +   ClassPathXMLApplicationContext class            (to work with xml)
+            +   AnnotationConfigApplicationContext class        (to work with annotation)
+
+Dependency Injection
+----------------------------
+1) setter injection (property injection)
+2) constructor injection
+    + we must have default constructor
+    + we need to have a matching parameter constructor
+
+by default container always create only one object for one bean configured.
+(single ton design pattern)
+
+Spring Bean Scopes:
+---------------------
+1) singleton    (default)
+2) prototype    
+3) request      (web applications)
+4) session      (web applications)
+5) application   (web applications)
+
+Spring Bean Life Cycle Methods:
+---------------------------------
+init-method = "methodName"
+destroy-method = "methodName"
+
+Note:
+    For prototype scoped beans, destory-method is never called.
+    how ever objects are destroyed by the container.
+
+auto wiring:
+------------
+1) byName       : based on the object name (id)     
+2) byType       : based on the class name
+3) constructor  : uses constructor to inject
+4) no           : 
+
+annotations:
+-------------
+@Configuration  : to mark a configuration class
+@ComponentScan  : specify what is the root package where spring beans are found
+@Bean           : it is a method-level annotation which indicates object is created by 
+                  IoC container.
+
+Developer : Develop the code for one module.
+Testers : will write test cases and test the code he will inform to developer.
+
+
+Full Stack Developer
+Test Driven Development:
+    first we will write test cases.
+    write some dummy code (project code)
+    perform the testing on this dummy code.
+    all test cases will fail.
+
+    then start developing programs such a way that each test case is passed.
+
+
+Day - 10    
+----------------------------------------------------
+steroe type annotations (org.springframework.stereotype)
+@Component  : for all beans
+    @Service        :   for all service related class
+    @Repository     :   for all DAO classes
+    @Configuration  :   for all java based configuration classes
+
+@Autowired
+    by default it is taken as "byType"
+@Qualifier(value="beanId")
+    it is taken as "byName"
+
+
+Spring MVC      (Spring Web MVC):
+------------------------------------
+MVC is a design pattern.
+
+Model       :   data    (classes | beans)
+View        :   presentation    (html)
+        View Engine : views are rendered by these engines.
+                    JSP (Java Server Pages) is the preferred one.
+Controller  :   will take the flow. (class)
+
+user / client (browser)   ---> request    ---->   web server
+user / client (browser)  <--- response   <----   it will execute a corresponding program
+
+browser can understand only HTML.
+
+
+JSTL    (Java Server Pages Tag Library)
+---------------------------------------------
+mainly used to present data in JSPs.
+what is JSP?
+    It is a HTML but we can embed java code.
+
+To execute any web application, we need a web container / web server.
+eg: Tomcat 8.5+, WildFly, Jetty
+
+FrontController : It is given by Spring framework.
+                  It is a servlet.
+                  It is also known as Dispatcher Servlet.
+
+Controller : is created  by us.
+
+xml based configuration:
+-------------------------
+web.xml
+    configuration information related to web application.
+dispacher-servlet.xml
+
+java based configuration:
+---------------------------
+web.xml alternate
+    create a class (WebApp) implements WebApplicationInitializer interface.
+dispatcher-servlet.xml  
+    create a class (SpringWebMvcConfig) implements WebMvcConfigurer
+    create a bean for ViewResolver. it maps the logical view name to physical jsp file.
+
+
+
+Steps:  (Eclipse)
+------------------
+1) create a new maven project
+    don't skip archetype selection, click "Next"
+    choose org.apache.maven.archetypes  -   maven-archetype-web     -   1.0
+2) pom.xml
+        add the java 8 properties
+        add the following dependencies
+        servlet, spring-web-mvc, jstl
+3) create a folder with the name "java" in src->main
+4) create a package "com.cg.swmd.config" (int src/main/java)
+        SpringWebMvcConfig.java
+        WebConfig.java
+    
+sterotype annotations:
+a) @Controller
+        it is collection of methods (actions).
+        these are executed whenever a respective request is coming from the client.
+
+http://localhost:8082/spring-web-mvc-demo/
+
+ModelAndView (org.springframework.web.servlet.ModelAndView) class:
+--------------------------------------------------------------------
+    it can contain both data and view name.
+
+JSP EL (Expression Language):
+--------------------------------
+    to enable EL in jsp's 
+    
+    <%@ page ... 
+        isELIgnored="false"%>
+
+    ${ variableName }
+
+    ${param.value}  : request parameter
+    
+
+JSTL:
+-----
+we need to add the jstl library   (core library)
+
+<%@ taglib uri="" prefix="c" %>
+
+1) core tags
+<c:out          : to display value of a variable 
+<c:if
+<c:for
+<c:forEach  var="varName"   items="arrayName/CollectionName>    
+    ${varName}
+</c:forEach>
+to iterate an array or a collection
+
+<c:choose       : just like switch-case
+<c:set          : to create and initialize a variable
+
+
+2) form tags
+3) formatting tags
+4) xml tags
+5) sql tags
+
+                                    Spring Boot
+                                    -----------
+
+1) Opinionated ‘starter' dependencies 
+        -   to simplify the build and application configuration
+    + spring-boot-starter-data-jpa
+    + spring-boot-starter-security
+    + spring-boot-starter-test
+    + spring-boot-starter-web
+    
+2) Embedded (tomcat / jetty) server 
+        -   to avoid complexity in application deployment
+
+3) Metrics, Health check, and externalized configuration
+
+4) Automatic config for Spring functionality – whenever possible
+
+MVC configuration
+    Spring requires defining the dispatcher servlet, mappings, and other 
+    supporting configurations. 
+    We can do this using either the web.xml file or an Initializer class:
+    We also need to add the @EnableWebMvc annotation to a @Configuration class, and 
+    define a view-resolver to resolve the views returned from the controllers.
+
+    Spring Boot only needs a couple of properties to make things work once we add the 
+    web starter.
+    All of the Spring configuration above is automatically included by adding the 
+    Boot web starter through a process called auto-configuration.
+
+How Spring Boot Bootstraps?  (BootStrapping - specify the startup program)
+    The entry point of a Spring Boot application is the class which is annotated with 
+    @SpringBootApplication.
+
+Packaging and Deployment?
+    the "Spring Boot Maven Plugin" provides Spring Boot support in Maven. 
+    It also allows packaging executable jar or war archives and running 
+    an application “in-place.”
+
+
+Day - 12 (19-april-2021)
+-------------------------------------------------------
+spring web mvc forms:
+-----------------------
+jstl forms
+
+Http Request methods:
+---------------------
+GET         : to retrieve information from the server   (if a link is clicked)
+POST        : submitting data to the server
+PUT
+DELETE
+PATCH
+
+
+@GetMapping(path="/greet")
+@PostMapping(path="/greet")
+
+(or)
+
+@RequestMapping(path="/greet", method=RequestMethod.GET)
+@RequestMapping(path="/greet", method=RequestMethod.POST)
+
+emp-input.jsp
+emp-output.jsp
+
+
+Day - 13    (20-apr-2021)
+-------------------------------------------------------------
+Spring Data
+    + Spring Data JPA
+    + Spring Data JDBC  (Spring JDBC)   -   Not Recommended
+
+Spring Data validations     (Bean Validations)
+    @NotEmpty
+    @NotNull
+    @NotBlank
+    @Min
+    @Max
+    @pattern
+    @Email
+
+    @PastOrPresent
+    @FutureOrPresent
+
+
+
+
+dependencies    
+    + Spring Data JPA, Spring Web, Spring Boot Devtools, Oracle Driver, 
+    + Starter Tomcat, JSTL, Tomcat Embed Jasper, Spring Boot Starter validations
+         - add these dependencies manually in pom.xml
+
+add the entries in application.properties
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
+spring.datasource.username=postgres
+spring.datasource.password=sa
+
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.format_sql=true
+
+
+DAO Layer:
+----------
+create an interface that should be inherited from 
+CrudRepository interface (or) JPARepository interface
+
+we prefer JPARepository (it is extending CrudRepository and supports additional features like 
+    Sorting, Pagination etc.,)
+
+JPARepository provide methods to perform CRUD operations.
+JPARepository<className, primaryKeyDataType>
+
+JPARepository methods:
+-------------------------
+save()
+deleteById()
+findById()
+findAll()
+
+
+@Valid         : to perform validations against entity
+BindingResult : contain all validation error messages
+form:errors     : to display error message given in the annotation of entity class
+.
+
+
+
+
+
+
