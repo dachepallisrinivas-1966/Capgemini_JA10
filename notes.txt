@@ -860,9 +860,143 @@ findAll()
 @Valid         : to perform validations against entity
 BindingResult : contain all validation error messages
 form:errors     : to display error message given in the annotation of entity class
-.
 
 
+                                    RESTful Web Services
+                                    --------------------  
+establish communication between TWO different applications.
+(B2B Communications)
+
+yourhotel.com   ->  java + angular
+
+    Web service -> data exchange format
+        i) xml
+        ii) json
+
+otherwesite.com ->  php + mysql / .net + sql server + react
+
+Two types:
+------------
+1) SOAP Webservice 
+2) REST 
+
+SOAP (simple object access protocol) web services:
+
+        data exchange is done using xml format
+        work on a special protocol known as SOAP protocol.
+    
+    <employee>
+        <empId>101</empId>
+        <firstName>Srinivas</firstName>
+        <lastName>Dachepalli</lastName>
+    </employee>
+
+
+    <employees>
+         <employee>
+            <empId>101</empId>
+            <firstName>Srinivas</firstName>
+            <lastName>Dachepalli</lastName>
+        </employee>
+         <employee>
+            <empId>102</empId>
+            <firstName>Srinivas</firstName>
+            <lastName>Dachepalli</lastName>
+        </employee>
+    </employees>
+
+REST    (Representational State Transfer Protocol) Web service:
+    it work on http protocol.
+    it support various data formats - JSON (default), XML, HTML, PlainText and many...
+
+    JSON (Java script object notation)
+    is a new way of exhanging data between two different applications.
+    it is light weight.
+    every modern technology support JSON widely.
+
+    {
+        "empId" : "101",
+        "firstName" : "Srinivas",
+        "lastName" : "Dachepalli"
+    }
+
+     array of JSON objects:
+    -----------------------
+    [
+        {
+            "empId" : "101",
+            "firstName" : "Srinivas",
+            "lastName" : "Dachepalli"
+        },
+        {
+            "empId" : "102",
+            "firstName" : "Srinivas",
+            "lastName" : "Dachepalli"
+        },
+        {
+            "empId" : "103",
+            "firstName" : "Srinivas",
+            "lastName" : "Dachepalli"
+        }
+    ]
+
+Two ways to work with RESTful web service:
+-------------------------------------------
+    1) JAX-RS library                           (Servlet+JSP)
+    2) Spring Boot REST (sping boot module)
+
+we will create our own APIs.
+
+
+Http Verbs  (Http Request Methods):
+-----------------------------------
+1) GET  -   Idempotent
+2) POST -   Not Idempotent
+3) DELETE - Idempotent
+4) PUT    - Idempotent  (to update entire record)
+5) PATCH   (to update few fields)   
+
+
+From a RESTful service standpoint, for an operation (or service call) to be idempotent, 
+    clients can make that same call repeatedly while producing the same result. 
+    In other words, making multiple identical requests has the same effect as making a 
+    single request. 
+
+The PUT and DELETE methods are defined to be idempotent.
+
+ResponseEntity:
+    headers + body + status 
+
+Http Status Codes
+
+    404 - requested resource not found
+    500 - internal server error
+    200 - OK
+
+1xx: Informational – Communicates transfer protocol-level information.
+2xx: Success – Indicates that the client’s request was accepted successfully.
+3xx: Redirection – Indicates that the client must take some additional action in order to complete their request.
+4xx: Client Error – This category of error status codes points the finger at clients.
+5xx: Server Error – The server takes responsibility for these error status codes.
+
+@RestController = @Controller + @ResponseBody
+
+
+We will create API 
+    - that will contain End-Point URLS.
+
+html support only two request methods - GET / POST
+
+RESTful Client tools - like POSTMAN, Insomnia etc.,
+    support - GET / POST / DELETE / PUT / PATCH
+
+
+url ? var-1 = value-1 & var-2 = value-2 & var-3 = value-3
+
+localhost:8090/emps?empId=5                         (request parameters)
+localhost:8090/emps?salary=10000&desg=manager       (request parameters)
+localhost:8090/emps/5                               (url segments)
+localhost:8090/depts/emps/managers                  (url segments)
 
 
 
