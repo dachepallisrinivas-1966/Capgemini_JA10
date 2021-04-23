@@ -1033,3 +1033,23 @@ REQ-2    retrieve an employee by empId       GET         localhost:8082/emps/{em
 REQ-3    add an employee                     POST        localhost:8082/emps
 REQ-4    delete an employeee                 DELETE      localhost:8082/emps/{empId}     localhost:8082/emps/2
 REQ-5    updating an employee                PUT         localhost:8082/emps  
+
+
+
+Guidelines for your Spring Boot + JPA + Hibernate Project
+-----------------------------------------------------------------------
+1) We will have Model class	- LoanModel  - 	(All validations)
+   and also an Entity class	- LoanEntity -  (It is related to DB, all JPA annotations it contains)
+2) In each Model class, we have to override equals() and hashcode() method (apart from constructors, setters and getters
+   and toString()
+3) In each Entity class, use JPA annotations. No need to override equals() and hashcode() method.
+
+	provide data -> model -> validations are performed using service layer
+		-> convert the model into entity -> send the entity to DAO
+
+[[ USP ]]
+4) Create a utitily class (eg: EMParser - Entity-Model Parser)
+	the job of this class is to convert the model into entity and vice versa.
+
+[[ USP ]]
+5) used streams wherever possible
