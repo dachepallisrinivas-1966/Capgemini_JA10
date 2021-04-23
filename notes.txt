@@ -965,7 +965,7 @@ From a RESTful service standpoint, for an operation (or service call) to be idem
 The PUT and DELETE methods are defined to be idempotent.
 
 ResponseEntity:
-    headers + body + status 
+    http-headers + response-body + http-status 
 
 Http Status Codes
 
@@ -1000,4 +1000,36 @@ localhost:8090/depts/emps/managers                  (url segments)
 
 
 
+Full Stack Developer
+    Major coding
+        1) RESTful web services         (Spring REST + JPA + Hibernate)
+                we will test all these web services (URLs) in POSTMAN tool.
 
+        2) Angular                      (UI)
+
+Exception Handling in RESTful webservices:
+--------------------------------------------
+1) locally
+    for each controller, we can have exception handling
+2) globally         (PREFERRED WAY)
+    for all controllers, we handle exceptions
+
+@RestControllerAdvice
+    global exception class must be marked with @RestControllerAdvice annotation
+@ExceptionHandler
+    It is a method level annotation, that takes exception class name as parameter.
+
+
+controller -> service -> dao -> DB
+
+
+URLs:
+------
+
+REQ_ID   REQ_DESCRIPTION                 HTTP Method     End Point URL                      Example`
+---------------------------------------------------------------------------------------------------------------------
+REQ-1    retrive all employees               GET         localhost:8082/emps
+REQ-2    retrieve an employee by empId       GET         localhost:8082/emps/{empId}     localhost:8082/emps/2
+REQ-3    add an employee                     POST        localhost:8082/emps
+REQ-4    delete an employeee                 DELETE      localhost:8082/emps/{empId}     localhost:8082/emps/2
+REQ-5    updating an employee                PUT         localhost:8082/emps  

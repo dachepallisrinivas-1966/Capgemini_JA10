@@ -1,5 +1,6 @@
 package com.cg.sbwrcd.service;
 
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,6 +21,6 @@ public interface IEmployeeService {
 	List<Employee> findAll();
 	List<Employee> findAllByDeptName(Department dept);
 	List<Employee> findAllByJoinDate(LocalDate joinDate);
-	List<Employee> findAllByBasicSalaryRange(int lb, int ub);
+	List<Employee> findAllByBasicSalaryBetween(BigInteger lb, BigInteger ub);
 	
 }

@@ -1,8 +1,8 @@
 package com.cg.sbwrcd.service;
 
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -88,8 +88,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	}
 
 	@Override
-	public List<Employee> findAllByBasicSalaryRange(int lb, int ub) {
-		return empRepo.findAllByBasicSalaryRange(lb, ub);
+	public List<Employee> findAllByBasicSalaryBetween(BigInteger lb, BigInteger ub) {
+		return empRepo.findAllByBasicSalaryBetween(lb, ub);
 	}
 
 }
