@@ -1,0 +1,357 @@
+Guidelines for your Spring Boot + JPA + Hibernate Project
+-----------------------------------------------------------------------
+1) Coding Standards
+	+ proper naming conventions
+	+ proper indentation
+	+ comments for both class as well as methods
+
+2) create database script file.
+   write create table statments.
+   insert meaningful data into these tables. (5 to 10 rows)
+
+3) Test Driven Development
+	we will write the test cases.
+	in junit, unit means "class".  (class under test)
+
+	we are expected to write test cases for "service" layer.
+
+	mock the DAO when we are test cases for service layer.
+	so that we don't need to talk to database for testing purpose.
+
+
+4) create as many user defined exception class as require. so that code is more readable and manageable.
+
+EMParser	(EntityModelParser : to convert all model to entity and vice versa)
+model
+entity
+dao interface
+service interface
+create service implementation class, but don't write any code in the overrided methods.
+
+5) for every operation in the service layer,both positive and negative test cases.
+	add(loan)
+
+
+6) In ServiceImpl classes, inject EMParser along with other classes like repo.
+annotate methods like add(), save(), delete() with @Transactional.
+In the parameter constructor, don't take EMParser as parameter. Instead, create the EMParser object in the 
+constructor definition like ...
+
+	this.EMParser = new EMParser();
+
+
+	
+7) In GlobalException	handler (RestControllerAdvice),
+	include a method "messageFrom(BindingResult result)" to handle all validation failure messages.
+
+
+
+8) We will have Model class	- LoanModel  - 	(All validations)
+   and also an Entity class	- LoanEntity -  (It is related to DB, all JPA annotations it contains)
+9) In each Model class, we have to override equals() and hashcode() method (apart from constructors, setters and getters
+   and toString()
+10) In each Entity class, use JPA annotations. No need to override equals() and hashcode() method.
+
+	provide data -> model -> validations are performed using service layer
+		-> convert the model into entity -> send the entity to DAO
+
+[[ USP ]]
+11) Create a utitily class (eg: EMParser - Entity-Model Parser)
+	the job of this class is to convert the model into entity and vice versa.
+
+[[ USP ]]
+12) used streams wherever possible
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+anuj khare -     8319702841
+prajjwalchauhan093@gmail.com
+Naman jain - 7417176755
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Common Instructions
+------------------------
+1. make sure that entire project contain proper comments.
+2. every body should have the entire project.
+3. and execute it and run the test cases also.
+4. modify the ppt. include your slides - class diagrams, sequence diagrams, er diagrams.
+5. core java questions
+	exception handling
+		what is checked and unchecked exception?
+			if the exception class is derived from RuntimeException, it is unchecked excetion.
+			otherwise it is checked exception.
+			Defensive Programming is the technique used to handle unchecked exception.
+
+			Employee emp;
+
+
+			if (emp != null) {
+				System.out.println(emp.getSalary());		
+			}
+
+
+
+			
+		what is throw and throws?
+			throw keyword is used to raise an exception (user defined exception)
+			throws keyword is used to deligate the exception handling responsibility 
+			to the caller of the method.
+
+
+		InvalidMarksException
+
+Team - A
+		Class Student {
+
+			int marks;
+
+			/*void setMarks(int marks) {
+				try {
+					if (marks > 100) {
+						throw new InvalidMarksException("marks must be within 0 to 100 only");
+					this.marks = marks;
+				} catch(InvalidMarksException excep) {
+					System.out.println(excep.getMessage());
+				}
+			}*/
+
+			void setMarks(int marks) throws InvalidMarksException {
+				if (marks > 100 || marks < 0) {
+					throw new InvalidMarksException("marks must be within 0 to 100 only");
+				this.marks = marks;
+			}
+		}
+
+Team - B
+		Class StudentApp {
+			public static void main(String [] args) {
+				Student s = new Student();
+				try {
+					s.setMarks(500);  
+				} catch(InvalidMarksException excep) {
+					System.out.println(excep.getMessage());
+				}
+			}
+		}
+
+
+
+		how to create user defined exceptions?
+
+			class InvalidMarksException extends Exception {
+				public InvalidMarksException(String message) {
+					super(message);
+				}
+			}
+
+
+		what is the use of finally block?
+	
+		doCheck() {
+
+			try {
+				int b = args[0]/args[1];
+				System.out.println(b);
+				return;
+			} catch(Exception excep) {
+				System.out.println(excep.getMessage());
+			}
+			catch(ArithmeticException excep) {
+				System.out.println(excep.getMessage());
+				
+			} finally {
+				System.out.println("in finally");
+			}
+		}
+
+
+		main() {
+			doCheck();
+		}
+
+		what is try-with-resources?
+			FileReader fr = null;
+			try {
+				fr = new FileReader("application.properties");
+				while ((ch = fr.read())!= -1) {
+					System.out.println(ch);
+				}
+			} catch(IOException  excep) {
+				System.out.println(excep.getMessage());
+			} finally {
+				try {
+					fr.close();
+				} catch(IOException excep) {
+					System.out.println(excep.getMessage());
+				}
+			}
+
+
+			(or)
+
+			try (FileReader fr = new FileReader("application.properties");) {
+				while ((ch = fr.read())!= -1) {
+					System.out.println(ch);
+				}
+			} catch(IOException  excep) {
+				System.out.println(excep.getMessage());
+			} 
+
+			The resource should be inherited from Closable interface.
+
+			
+
+			multi-catch exceptions
+
+			catch(ClassNotException | IOException     excep) {
+				
+			}
+
+
+
+
+
+			
+			
+		exception classes hierarchy?
+
+	collections
+		collection classes and interfaces hierarchy
+		what is the difference between list and set?
+		diff b/w arraylist and linkedlist?
+		diff b/w arraylist and vector?
+		diff b/w hashset, linkedhashset, treeset?
+		diff b/w comparable and comparator interfaces?
+		what is concurrent hashmap?
+		how do you sort an arraylist that contain employee objects.
+		what is the contract between hashcode and equals() ?
+		diff b/w hashmap, linkedhashmap and treemap?
+
+	streams
+		stream class methods - map(), reduce(), sorted() etc.,
+		what is the purpose of stream?
+		what is a functional interface?
+		what is a lambda ?
+		what are intermediate and terminal operations of streams?
+		
+
+	spring boot features
+	annotations?
+	multi-layered architecture
+
+
+6. prepare a slide - 
+	spring boot + jpa + hibernate
+	test driven approach, sonarqube, jenkins
+7. excel sheets (requirement specifications, test case specifications etc., ) must be updated.
+8. complete execution.
+
+
+
+password encryption in spring boot application.properties
+---------------------------------------------------------
+1. jasypt - java simplified encryption library 
+	download the jar file from (https://github.com/jasypt/jasypt)
+	extract it in any location.
+
+2. to encrypt oracle hr account password (eg: hr)
+   type the following command.
+
+E:\softwares\jasypt-1.9.3\lib>java -cp jasypt-1.9.3.jar org.jasypt.intf.cli.JasyptPBEStringEncryptionCLI input="hr" password=SimplePassword algorithm=PBEWithMD5AndDES
+
+(we are using MD5 - Message Digest Algorithm 5 and
+		DES - Data Encryption Standard)
+
+once we enter the above command, we will get the following information.
+
+----ENVIRONMENT-----------------
+
+Runtime: Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 25.221-b11
+
+
+
+----ARGUMENTS-------------------
+
+algorithm: PBEWithMD5AndDES
+input: hr
+password: SimplePassword
+
+
+
+----OUTPUT----------------------
+
+tHi+6DCrAt4BBn9otFdDRg==
+
+
+3. the encrypted password is 
+	tHi+6DCrAt4BBn9otFdDRg==
+
+4. 
+	add the jasypt dependency in pom.xml
+
+5. modify the application.properties file ...
+server.port=8090
+
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521/XE
+spring.datasource.username=hr
+# observe the below line
+spring.datasource.password=ENC(tHi+6DCrAt4BBn9otFdDRg==)
+
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.format_sql=true
+
+# observe the below line, SimplePassword is the key we used earlier in step - 2.
+jasypt.encryptor.password=SimplePassword
+
+
+6. run spring boot application.
+
+
+
+to decrypt your password, use the following command.
+
+E:\softwares\jasypt-1.9.3\lib> java -cp jasypt-1.9.3.jar org.jasypt.intf.cli.JasyptPBEStringDecryptionCLI input="tHi+6DCrAt4BBn9otFDRG==" password=SimplePassword algorithm=PBEWithMD5AndDES
