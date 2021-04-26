@@ -1,5 +1,6 @@
 Guidelines for your Spring Boot + JPA + Hibernate Project
------------------------------------------------------------------------
+(Test Driven Development)
+-----------------------------------------------------------
 1) Coding Standards
 	+ proper naming conventions
 	+ proper indentation
@@ -8,6 +9,89 @@ Guidelines for your Spring Boot + JPA + Hibernate Project
 2) create database script file.
    write create table statments.
    insert meaningful data into these tables. (5 to 10 rows)
+
+
+3) create the packages - 
+	+ entity
+	+ model
+	+ exception
+	+ dao
+	+ service
+	+ api
+	+ any other ...
+
+4) entity, models, exception (rest controller advicer), dao (include custom methods, custom queries)
+   service interface
+   service implementation without any code
+
+5) write test cases for service layer.
+   mock the dao.
+
+   run the test cases (both positive and negative). all the test cases should fail
+   (but if any test case return null, that will pass)
+
+
+aritifacts:
+----------
+1) requirement sheet	
+2) test case template
+3) redraw class diagrams, use case diagrams, sequence diagrames, er diagrams
+   (rational rose or anyother tool)
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+@Embeddable
+public class AddressModel{
+
+	@NotNull(message="Door Number cannot be null")	
+	@NotBlank(message="Door Number cannot be blank")
+	private String doorNo;
+	
+	@NotNull(message="street name cannot be null")	
+	@NotBlank(message="street name cannot be blank")
+	private String street;
+
+	...
+	
+}
+
+public class CustomerModel {
+	/**
+	 * This a local variable: {@link #userId} defines the unique Id for Customer
+	 */
+	private String userId;
+	
+	@NotNull(message="customer name cannot be null")	
+	@NotBlank(message="customer name cannot be blank")
+	@Pattern(regexp="^[A-Za-z ]{4,}$",message="Must be more than 4 Letters and should contain Alphabets")
+	private String userName;
+	
+	@Valid
+	private AddressModel address;
+
+	....
+}
+
+
+@Entity
+@Table(name="customers")
+public class CustomerEntity {
+	
+	@Embedded
+	private AddressModel address;
+	
+	....
+}
+	
+
+--------------------------------------------------------------------------------
+
+
 
 3) Test Driven Development
 	we will write the test cases.

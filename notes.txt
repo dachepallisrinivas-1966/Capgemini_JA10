@@ -1,4 +1,4 @@
-Srinivas Dachepalli | 6305 730 633 | dachepallisrinivas@gmail.com
+﻿Srinivas Dachepalli | 6305 730 633 | dachepallisrinivas@gmail.com
 Batch Code  :   JA-10 & JA-11
 Start Date  :   05-Apr-2021     
 Start Topic : From JDBC
@@ -744,6 +744,13 @@ to iterate an array or a collection
     + spring-boot-starter-security
     + spring-boot-starter-test
     + spring-boot-starter-web
+
+
+@SpringBootApplication = 
+		  @Configuration (to enable java based configuration)
+		+ @EnableAutoConfiguration (to enable spring boot's auto configuration)
+		+ @ComponentScan (to enable component scanning)
+
     
 2) Embedded (tomcat / jetty) server 
         -   to avoid complexity in application deployment
