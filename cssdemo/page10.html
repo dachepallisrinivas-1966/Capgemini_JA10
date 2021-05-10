@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animation</title>
+
+    <style>
+        #img1, #banner {
+            animation-duration: 5000ms;
+            animation-delay: 2s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        #banner {
+            border : 1px solid black;
+            padding:20px;
+            animation-name:flickeringBorder;
+        }
+
+        #img1 {
+            width:50px;
+            position : relative;
+            animation-name: imgSlide;
+        }
+        
+        @keyframes flickeringBorder {
+            0% { border: 5px dotted black;}
+            25% { border: 5px dashed black;}
+            50% { border: 5px solid black;}
+            75% { border: 5px dashed black;}
+            100% { border: 5px dotted black;}
+        }
+
+        @keyframes imgSlide {
+            from {
+                left : 0px;
+                transform : rotate(360deg);
+            }
+            to {
+                left : 900px;
+                trasform : rotate(0deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div id="banner">
+        <img src="images/f1.jpg" id="img1" width="50px">
+    </div>
+</body>
+</html>

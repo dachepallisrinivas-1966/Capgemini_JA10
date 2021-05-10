@@ -1060,3 +1060,319 @@ Guidelines for your Spring Boot + JPA + Hibernate Project
 
 [[ USP ]]
 5) used streams wherever possible
+
+
+
+
+					
+HTML 5
+---------------------------------
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+    </body>
+</html>
+
+Popular IDE:
+--------------
+1) Visual Studio Code
+2) Atom
+3) Sublime 
+many more ...
+
+
+
+HyperText
+Markup Language
+
+
+There are 2 types of websites
+1) static       (will present only static content - blogs)
+2) dynamic      (content will change every now and then - banking web site,
+                    reservation)
+
+what is the difference between tag and element?
+
+    <h1>my first web site</h1>      
+
+
+what is the difference between paired tags and unpaired tags (self-closing tags)?
+
+    <p>some paragraph</p>
+    <img />  
+    <input />
+    <br />
+    <hr />
+
+
+chrome -> java tutorial web site
+
+<html>
+    <head>
+        <keywords java ,collections,iostreams, stream api />
+    </head>
+    <body>
+    </body>
+</html>
+
+head tag is meant for writing meta-data.
+is mainly used by search engine.    (google, bing)
+SEO - Search Engine Optimization
+
+web site    -> hosted ->    
+    url
+    ranking
+
+java tutorials
+    tutorial point
+    javatpoint
+    w3schools
+
+e-commerce 
+    web site designing
+    host it
+    seo
+
+a tag contain attributes.
+an attribute is a key-value pair.
+
+<img height="30" width="25" src="1.jpg" />
+
+formatting tags:
+    
+    <p>
+        C
+        C++
+        java
+        Spring
+    </p>
+
+    <pre>
+        C
+        C++
+        java
+        Spring
+    </pre>
+
+output:
+--------
+CC++javaSpring
+
+        C
+        C++
+        java
+        Spring
+
+hr  :   horizontal ruler
+
+what is the difference between <p> and <span> ?
+
+    <p>abcd</p>
+    <p>xyz</p>
+
+    <span>abcd</span>
+    <span>xyz</span>
+
+
+html elements are of 2 types.
+1) block elements       <h1>, <p>, <div>
+2) inline elements      <span>, <b>, <i>
+
+<h1>this is heading-1</h1>
+<h2>this is heading-2</h2>
+
+images:
+--------
+never use "height" attribute.
+because if we specify width, the height is adjusted proportionately.
+
+anchor tags:
+-----------------
+<a
+href        hyperlink reference
+
+
+lists:
+------
+ordered  <ol>, <li>     (numbered list)
+    type="" I, i, A, a
+unordered <ul>          (bulleted list)
+    type="square | circle | disc"
+<ol>
+    <li>java</li>
+    <li>python</li>
+    <li>ruby</li>
+    <li>c#</li>
+</ol>
+
+
+design a web page that show the following output.
+----------------------------------------------------
+ToC
+    1. Core java
+        a. OOP
+        b. Collections
+        c. Streams
+        d. Exception Handling
+        e. JDBC
+    2. Database
+        a. PostGre
+    3. Code Quality Analysis 
+        a. Sonar Qube
+        b. Sonar Lint
+        c. PMD
+    4. UI
+        a. React
+        b. Angular
+        c. Vue
+
+
+Lists
+Images
+Hyperlinks
+Tables
+Forms
+
+<table>
+<tr>    : table row 
+<th>    : table heading
+<td>    : table data
+<caption> : table caption
+
+HTML 5 offer semantic tags:
+-------------------------------
+<thead>
+<tfoot>
+<tbody>
+instead of <b>, use <strong> tag
+instead of <i>, use <em> tag    (em stands for emphasize)
+
+comments:
+-------------
+<!--
+    write any 
+    comment in
+    many lines also
+-->
+
+
+Entire web page is designed using <table> tags.
+However this is not STANDARD.
+Instead of <table>, use always <div> tag.
+
+
+<div>       is a BLOCK element
+<p>         is a BLOCK element
+<span>      is an Inline element
+
+colspan attribute : to merge columns
+rowspan attribute : to merge rows
+
+
+frameset, frame
+    one web page can be divided into multiple parts.
+    each part is known as frame.
+    collection of frames is known as frameset.
+    in one frame, we can display one web page (.html)
+
+    but this is a deprecated.
+    instead of use div.
+
+iframe
+    internal frame.
+    this is again a standard.
+    in one iframe, we can display a page, we can play an audio, video etc.,
+
+
+form controls
+    form
+    input
+        type="text | password | number | date | time | email | file"
+
+    button
+        type="submit"
+        type="button"
+        type="reset"
+
+    check boxes
+    radio buttons
+    drop down list          (allow us to choose only one item)
+        <select>
+        </select>
+    list                    (to select multiple items)
+        <select>
+        </select>
+
+    file upload control
+        input type="file"
+
+        validation attributes
+            required
+            min
+            max
+            pattern
+
+HTML 5 Features:
+-------------------
+<!DOCTYPE html>
+
+semantic tags   - thead, tbody, tfoot   
+        <header>
+        <footer>
+        <section>
+        <article>
+        <nav>
+
+
+frame-example.html
+----------------------------------------
+<frameset cols="20%,*">
+	<frame src="Page1.html" />
+	<frameset rows="20%,*">
+		<frame src="Page2.html" />
+		<frame src="Page3.html" />
+	</frameset>
+</frameset>
+
+don't write any <html>, <head>, <body> tags.
+
+
+video control
+-----------------------------------------
+<body>
+    <video title="Testing Video"  controls width="500" height="500" 
+            poster="html5.jpg">
+		<source src="numbersvideo.m4v"  />
+        Sorry! Browser doesn't support HTML5
+    </video>
+</body>
+
+audio control
+-----------------------------------------
+<audio id="mysong" controls="controls">
+    <source src="SleepAway.mp3" />
+    You need a browser that supports HTML5!
+</audio>
+
+
+
+for all paragraphs
+    arial, 10px, red
+for all span
+    arial, 10px, red
+for all div
+    arial, 10px, red
+
+.common {
+    font-family : arial;
+    font-size : 10px;
+    color : green;
+}
+
+
+<p class="common">lorem400</p>
+<span class="common"> ... </span>
+
+

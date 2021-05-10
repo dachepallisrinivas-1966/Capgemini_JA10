@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .row {
+            background-color: blue;
+            padding:10px;
+        }
+        .col {
+            background-color: bisque;
+            width:100%;
+            min-height:100px;
+            display:inline-block;
+            text-align:center;
+            margin:5px;
+        }
+
+        @media only screen and (min-width:768px) {
+            .col {
+                width:32%;
+            }
+        }
+/*
+        @media only print {
+            .col, .row {
+                background-color: #ffffff;
+            }
+            .row {
+                border:1px dashed black;
+            }
+            .col {
+                border:1px solid black;
+                width:32%;
+            }
+        }
+*/
+    </style>
+</head>
+<body>
+    <section class="row">
+        <div class="col">First</div>
+        <div class="col">Second</div>
+        <div class="col">Third</div>
+    </section>    
+</body>
+</html>

@@ -1,0 +1,779 @@
+UI                                  UX
+-------------------------------------------
+User Interface                      User eXperience (rich UI)
+
+1. this is through which            is a well design UI
+user can interact with our          consideration not only the accessability
+software.                           of feature of a product, but also to consider seamless, 
+                                    effortless interact with validations on the go.
+
+
+Static  web application -   HTML5, CSS3                         -   content is pre-written
+
+Dynamic web application -   Serverside content generator(JSP)   -   content is generated dynamically.
+
+eg: we have header, footer and body.
+for each page suppose header and footer are common. but the body is different for each page.
+still for each page header and footer has to be loaded.
+this is the drawback.
+
+SPA (Single Page Application)
+    -   This is the art of the day.
+    -   The entire application is made up of single page.
+    -   Each page is divided into various sections (also known as components)
+    -   The required components are dynamically loaded from the server
+    -   we can also create popup windows, alerts, dialog boxes etc.,
+    
+    -   Application should run on the client side only.
+    -   we need a server-side executing data supplier (Middleware)
+        like ...
+            SOAP webservices
+            RESTful Webservice
+    -   it needs not the entire page, but the data returned by the server to render it on the page.
+
+    technologies used:
+    ------------------
+    HTNL 5              -   to define the content
+    CSS 3               -   to define the styles
+    Javascript (ES6)    -   Client side behaviour
+
+    Node
+    Angular
+    (other possibilities are - React JS / Angular JS / Angular / Vue)
+
+
+
+                                        CSS - 3
+                                        =======
+It stands for Cascading Style Sheets.
+It is a language that can define the appearance of an HTML element.
+There are three different ways to apply styling to an HTML page.
+1) In-line styles
+    It is applied for each element using it's style attribute.
+    <tagName style="css-property:value; css-property:value;">
+        TagContent
+    </tagName>
+
+
+    CSS Properties:
+    ------------------------------------------------
+    width               pixels. precentages, mm, cms
+    height
+    margin
+    padding
+    border
+
+    color               colorName, hexaCode (#000000 - #FFFFFF)
+    background-color
+
+    text-align
+    font-family
+    font-weight
+
+2) Embedding styles
+    CSS style is written in <style> </style> element.
+    <style></style> is defined in <head></head>.
+
+    <html>
+        <head>
+            <style>
+                selector {
+                    css-property : value;
+                }
+            </style>
+        </head>
+        <body>
+        </body>
+    </html>
+
+    what are selectors?
+    -------------------
+    selector is a simple string that can select a group of elements to which the 
+    style has to be appplied.
+
+    there are FIVE (5) types.
+    1. Tag name selector
+            the name of the tag act as a selector.
+            so that all elements with that tag name is applied with style defined.
+
+            p {
+                text-align : center;
+            }
+
+    2. Attribute selector
+            these are used to group elements by it's attribute.
+            attribute must be placed in [ ] square brackets.
+
+            [type] {
+                width: 200px;
+            }
+            
+    3. Class selector
+            class is a user-defined string, that can applied as class attribute to all those tags to which 
+            we wish to apply a style.
+            class selector must be defined with .   (dot)
+
+            .imp {
+                text-decoration : underline;
+            }
+
+            <p class=".imp"></p>
+    
+    4. ID selector
+            is used to apply a style to one particular element, which has refererd by this id.
+            id selector must be defined wuth # (hash)
+
+            #tagId {
+                border : 1px;
+            }
+
+    5. pseudo selector
+
+        we will discuss these selectors.
+
+
+
+    CSS Selector Operators:
+    -----------------------
+    s1 , s2     applies to elements that match both selectors
+    s1   s2     applies to all elements that match s2 and are inside s1
+    s1 > s2     applies to all elements that match s2 whose parent is s1
+    s1 + s2     applies to all elements that match s2 and are immediately after s1
+    s1 ~ s2     applies to every element that match s2 and is preceded by s1
+
+            applies to all elements that have
+            ---------------------------------
+    [s1]            s1 as attribute
+    [s1 = 'v1']     s1 attribute with value v1
+    [s1 ~= 'v1']  (or)  [s1 *= 'v1']
+                    s1 attribute contains word v1  (same as above - these are TWO ways)
+    [s1 != 'v1']    s1 attribute not equal to  v1
+    [s1 ^= 'v1']    s1 attribute starts with the word v1
+    [s1 $= 'v1']    s1 attribute ends with the word v1
+
+    pseudo selectors
+    ----------------
+    input:enabled       selects every enabled <input> element
+    p:first-child       selects every <p> element that is the first child of it's parent
+    p:first-letter      selects the first=letter of every <p> element
+    p:first-line        selects the first-line of every <p> element
+    p:first-of-type     selects every <p> element that is the first <p> element of its parent
+    
+    input:focus         selects the input element which has focus
+    a:hover             selects link on mouse over
+    
+    input:in-range      selects input elements with a value within a specified range
+    input:indeterminate selects input elements that are in an indeterminate state
+    input:invalid       selects all input elements with an invalid value
+    input:optional      selects all input elements with no "required" attribute
+
+    p:last-child        select every <p> element that is the last child of it's parent
+    p:last-of-type      select every <p> element that is the last <p> element of it's parent
+
+    a:link              select all unvisited links
+    :not(p)             select every element that is not <p> elements
+    p:nth-child(2)      select all <p> elements that is 2nd child of it's parent
+    p:nth-last-child(2) select all <p> elements that is 2nd last child of it's parent
+
+
+
+3) External styles
+    styles are defined in a separate ".css" file.
+    this file is linked in html file using <link> tag inside <head> section.
+    so that those styles are applied in that html file.
+
+
+                                Responsive Web Applications
+                                ===========================
+@media
+    screen 
+    printer
+
+
+                                Animations
+                                ==========
+keyframes
+    it is used to define animation properties.
+    then assign this keyframe name to any css selector.
+    
+    in keyframes, we will mention ...
+    what should be the initial value of css property?
+    what should be the final value of it?
+    what is the nature of transformation function?
+
+
+
+================================================================================================================
+
+
+                                                Bootstrap
+                                                ---------
+    Bootstrap is a CSS library.
+    contain lot many pre-defined css classes.
+    we can customize these classes also.
+
+    It offer Grid system.
+    Page can be divided into rows and columns.
+    each row can accomodate 12 columns.
+    one cell can occupy more than one column as well.
+    each row is represented by a class called "row".
+    each col is idenetified by a class called "col-colType-colSize"
+
+    colType 
+        xs      extra small
+        sm      small
+        md      medium
+        lg      large
+    eg:
+        col-xs-3
+        col-lg-1
+
+    How to integrate Bootstrap?
+        it contain bootstrap-3.min.css
+        we can download this file from bootstrap web site
+        (or)
+        we can use CDN (content delivery network)
+        refer this file in <link> tag.
+
+    1) html 5 doctype
+    2) use lang attribute and set it to english
+    3) also do set the char set.
+    4) mobile first approach
+    thus add the view port conf as meta tag.
+
+    bootstrap container classes
+        .container          creates a fixed width container
+        .container-fluid    creates a full fixed width container
+
+explain all examples in webkit repository.
+
+
+================================================================================================================
+
+
+                                        Javascript (ECMA Script 6)
+                                        --------------------------
+
+1) check whether node installed or not.
+    goto cmd, type "node --version"
+    v10.16.0
+
+2) Javascript is a web scripting language.
+
+what is the difference between program and script?
+
+program ---------> compiled ---------> executable
+
+script ----------> no compilation
+
+scripting language is executed by a runtime.
+
+browser ---------> runtime for javascript       (client side)
+
+Node        - runtime for server side javascript
+Nashorn
+Xeebar
+
+Java and Javascript have nothing to do with one another.
+javascript has the similar syntax as that of java.
+
+3) how to execute?
+
+cmd ->  node p001.JS
+
+                                        Functions
+                                        ---------
+function  functionName(paramList) {
+    statement(s)
+}               
+
+1. a function is also an object.
+2. hence a function can be assigned to a variable.
+
+    eg:
+    var sum = function(v1, v2) {
+                    return v1+v2;
+            }
+    var s = sum(10,23);
+    console.log(s);
+
+3. function can be passed as a parameter to another function.
+4. a function can return another function.
+
+                                        Closures
+                                        --------
++ Closure is a function that return another function.
+
+var generateIsFactorOf = function(divisor) {
+                                return function(value) {
+                                    return value%divisor == 0;
+                                }
+                        };
+var isDivisibleBy2 = generateIsFactorOf(2);
+var isDivisibleBy5 = generateIsFactorOf(5);
+var isDivisibleBy7 = generateIsFactorOf(7);
+
+console.log("is 4 divisible by 2 : " + isDivisibleBy2(4));
+
+
+                                    IIF 
+                                    ---
+It stands for immediately Invoked Function Expression.
+
+(function () {
+    statement(s);
+})();
+
+the function is defined and executed then and there. 
+we cannot re-use this function.
+it can be used only once, since it do not have any name.
+it is used for initialization.
+
+                                Arrow Function
+                                --------------
+function sum(n1,n2) {
+    return n1+n2;
+}                
+
+can be written as ...
+
+(n1,n2) => n1+n2;
+
+
+Drawback of javascript functions:
+---------------------------------
+1. it is suffering from type safety.
+2. parameters are type-less, so there is no clue while calling functions with parameters.
+3. lot of time should be spent on debugging.
+4. The solution is use "Typescript", a product from Microsoft.
+
+
+                            Scopes of Variables
+                            -------------------
+(script09.js)                            
+
+1. by default, every variable that is defined with no keyword is considered as global variable.
+2. if we declare variable with "var" keyword, it is a function scoped variable.
+3. if we declare variable with "let" keyword, it is a block scoped variable.
+
+
+                            "strict" directive
+                            ------------------
+"use strict";
+write the above statement in the first line of the program.
+it make sure that every variable is declared before using it.
+
+
+
+                            sugar syntaxes
+                            --------------
+1. multi-line strings
+2. arrow functions
+3. template literals  (use backquotes or backticks)
+4. default parameters
+5. block scoped Variables   
+    - var
+    - let
+    - block scoped
+6. const
+
+    
+                            OOP
+                            ---
+class Box {
+    constructor() {
+        this.length = 0;
+        this.width = 0;
+    }
+}                            
+
+1. a class cannot have data members declared explicitly.
+2. data members must be declared inside the constructor using "this" keyword.
+3. a class can have only one constructor.
+
+let b = new Box();
+b.length = 10;
+b.width = 15;
+console.log(b);
+
+(or)
+
+let b2 = new Box();
+b2 = {length:11, width:22};
+console.log(b2);
+
+                                    Destructuring (Unpacking)
+                                    -------------------------
+let width = b2.width;                                    
+let length = b2.length;
+
+(or)
+
+let {length, width} = b2;
+console.log(length);
+console.log(width);
+
+
+                                    member functions
+                                    ----------------
+1. when we define a function inside the class, do not use the keyword "function".
+2. "static" keyword must be used to defined static member function, but again
+   should not use "function" keyword.
+3. "extends" can be used for "inheritance".
+4. method overriding is possible.
+5. method overloading is not possible.
+
+
+Assignments:
+--------------
+1. write a javascript to
+    a) declare an array of employee JSON (empno, name, basic, hra, da, joindate)
+    b) retrieve list of employees hired in a range of given dates
+    c) retrieve list of employees whose name starts with a given alphabet (like 'A')
+    d) retrieve list of employees whose experience is >= 13 years
+    e) retrieve list of employees whose net pay is within a given range.
+    
+
+
+                                        Modules
+                                        -------
+1. Javascript does not have the concept of modules.
+2. Each .js file is re-usable, hence each .js file is considered as module.
+3. we used to depend on third-party libraries for modularization.
+   eg: RequireJS, CommonJS, Asynchronous Distributed Modules
+
+modules-demo-native folder
+--------------------------
+    module1.js, module2.js, app.js
+    we are using RequireJS
+
+4. ES6 introduced a standard module concept in Javascript.
+
+    as of now, we do not have runtime environment that support all the features of
+    ES6.
+    that is why, code of ES6 must be converted to ES5
+    converting code from ES6 to ES5 is called transpiling or transpilation.
+
+ES6 modules:  (modules-demo-modern)
+------------------------------------
+export is a keyword.
+ES6 offer experimental modules.
+
+modules-demo-modern folder
+--------------------------
+    module1.mjs, module2.mjs, app.mjs
+we cannot run app.mjs directly.
+
+to run:
+    node --experimental-modules app.mjs
+
+
+                            Javascript (ES6) API
+                            --------------------
+built-in objects
+----------------
+window          can be accessed only if script run on browser
+self            can be accessed only if script run on browser on a frame
+global          can be accessed only if scripr run on node / other environments
+globalthis      can be accessed if script run on window / windowless environments.
+                (need node13 version)
+
+built-in classes
+----------------
+string          
+date
+math
+regex
+
+functions available globally on window / windowless environments.
+-----------------------------------------------------------------
+parseFloat(string)
+parseInt(string)
+
+isNan()
+eval()      : dynamically execute any javascript expression
+
+Number()    : to convert any object into a number.
+String()    : to convert any object into string.
+
+setInterval()
+clearInterval()
+
+setTimeout()
+clearTimeout()
+
+functions available globally on browser environments:
+-----------------------------------------------------
+many functions are there.
+refer window object - w3schools
+
+document property of the window object:
+---------------------------------------
+it give access to DOM (Document Object Model).
+
+<html>
+    <head>
+        <title>someTitle</title>
+    </head>
+    <body>
+        <p>somePara</p>
+    </body>
+</html>
+
+                                        html
+                        head                            body
+
+                        title                           p
+
+                        textNode (someTitle)            textNode (somePara)
+
+the browser load the entire html into a tree model. this tree is called DOM.
+
+
+                                Asynchronous Programming
+                                (Concurrent programming)
+                                ------------------------
+1. It is similar to multi threading of Java.
+2. javascript run time environments support multi threading.                                
+   but we can acheive this using "time-space sharing" concept.
+
+3. let handler = setInterval(job1, 2000)
+    for every 2000 milli seconds, the function job1 is executed.
+
+    clearInterval(handler)
+
+4. let handler = setTimeout(job1, 2000)
+    the job1 is executed after 2000 milli seconds.
+    it is executed only once.
+
+    clearTimeout(handler)
+
+
+                                Promise
+                                -------
+1. It is a new class in ES6
+
+2. The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+
+3. Promise p = new Promise(job)                                 
+
+    job = function(resolve, reject) {
+
+    }
+
+    the job is a function that accept two parameters - resolve and reject
+    resolve is used to signal the successful completion of job
+    reject is used to signal an abrupt error
+
+4.  p.then(
+        ()=>{ },        // function gets executed on resolve
+        ()=>{ }         // function gets executed on reject
+    );   
+
+   
+Assignment-1
+------------
+Job inputs
+
+    an array of odd data
+    an indicator (1 or -1)
+
+Expected Task
+    if indicator is 1
+        I want a list of all even indexed elements in that array
+    else if indicator is -1
+        I want a list of all odd indexed elements in that array
+
+    if data is null or indicator is other than 1 or -1
+        raise an error
+
+Assignment-2
+------------
+Develop a javascript based app
+to execute below three series parallely.
+
+1. a series to print all seven multiples in a given range (lower and upper limit)
+    series has to be rejected if the any limits in the range is negative
+    and if the lower limit is greater than the upper limit.
+2. a series to print all ascii charaters in a given range of ascii codes.
+            Series has to be rejected if the any limits in the range is negative
+            and if the lowe limit is greater than the upper limit
+            and lower limit can not be less than zero,
+            and upper limit can not be more than 255.
+3. a series to print all natural numbers in a given rnage (lower and upper limit).
+            Series has to be rejected if the any limits in the range is negative
+            and if the lowe limit is greater than the upper limit.
+            and lower limit can not be less than one.
+
+
+
+                                DOM manipulation
+                                ----------------
+Event Handling
+    onClick
+    onKeyDown
+    onKeyUp
+    onDblClick
+    onMouseOver
+
+    onChange
+    onFocus
+    onBlur
+    onSumit
+
+innerHTML       this property can be used on non-form elements like DIV, P etc.,
+value           input
+selectedIndex   select
+checked         input type="checkbox | radiobutton"
+
+
+
+                                        HTML 5
+                                        ------
++New Form elements
+    date
+    time
+    datetime
+    email
+    range
+    number
+    
+    <label />
+    <button />
+
++ Form validations
+    required
+    min
+    max
+    pattern
+
++ Semantic elements
+    strong
+    em
+
++ Semantic Layout elements
+    article
+    header
+    footer
+    nav
+    section
+    aside
+    address
+
++ New Media elements
+    canvas
+    audio
+    video
+        
+Webstorage
+----------
+when a web wants to store data on a client, we used to depend on cookies.
+but cookies are not safe, HTML 5 introduced web storage.
+
+localstorage
+    it is persistent
+sessionstorage
+    it is available only inside the session
+
+it is in the form of key-value pair, where value must always be a string.
+
+
+Geolocation
+DragDrop
+
+
+                                    JQuery
+                                    ------
+$('css-selector')
+    return one or more html elements that match the given selector.
+$(javascriptObject)
+    return the enhanced copy of the javascriptObject, such that you
+    can invoke jQuery function on it.
+$(function() { })                                             
+    teh function passed is executed as and when the page is ready.
+    it is equivalent to the onload event the body element.
+
+                                    
+jQuery API
+----------
+    // assuming we have a <p id="para1"></p>
+
+    $('#para1').text()                      return the content of the para
+    $('#para1').text('some text')           to modify the content of para to 'some text'
+
+    $('#para1').css('css-property')         return the value of the css-property of para
+    $('#para1').css('css-property', 'value')         to modify the value of the css-property of para
+
+    $('#para1').prop('javascript-property')         return the value of the javascript-property of para
+    $('#para1').css('javascript-property', 'value')         to modify the value of the javascript-property of para
+
+    $('#para1').attrib('html-attribute')            return the value of the html-attrubute of para
+    $('#para1').attrib('html-atribute', 'value')    to modify the value of the html-attribute of para
+
+    $('#para1').click(function() { } )              binds the function to the given para onClick event.
+    $('#para1').click()                             it triggers onClick event on the para programmatically.
+
+    similarly we have
+        dblClick
+        focus
+        blur
+        keyup
+        keydown
+        keypress
+        mouseover
+        mouseleave
+        change
+
+
+    jQuery API on form elements
+    ---------------------------
+    <input type="text" id="tb1" />
+
+    $('#tb1').val()             return the value typed in text box
+    $('#tb1').val('srinivas')   change the value of the text box to 'srinivas'.
+
+
+    event binding functions
+    -----------------------
+    $('#btn1').click(function() { })        the function is called when btn1 is clicked 
+
+    $('#btn1').on('click', function() { })
+    $('#btn1').on({'click':function() { }, 'dblClick' : function() { }});
+
+    $('#btn1').off('click', function() { })
+    $('#btn1').off({'click':function() { }, 'dblClick' : function() { }});
+
+    $('#btn1').bind('click', function() { })
+    $('#btn1').bind({'click':function() { }, 'dblClick' : function() { }});
+
+    $('#btn1').unbind('click', function() { })
+    $('#btn1').unbind({'click':function() { }, 'dblClick' : function() { }});
+
+    off() and unbind() will dis-associate function from the event binding.
+
+    
+    jqueryAPI effects:
+    ------------------
+    slide()
+    fade()
+    appear()
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

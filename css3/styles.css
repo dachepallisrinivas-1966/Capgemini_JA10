@@ -1,0 +1,24 @@
+* {
+    margin : 0px;
+}
+body {
+    background-color: blueviolet;
+    color : white;
+    font-weight: bold;
+}
+
+[type="text"] {
+    width : 200px;
+}
+
+[type="email"] {
+    width : 300px;
+}
+
+.imp {
+    text-decoration: underline;
+}
+
+div span {
+    text-transform: uppercase;
+}

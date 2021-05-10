@@ -21,15 +21,39 @@ Guidelines for your Spring Boot + JPA + Hibernate Project
 	+ any other ...
 
 4) entity, models, exception (rest controller advicer), dao (include custom methods, custom queries)
+
+   for all entity classes, add suffix "Entity" (for eg: CustomerEntity, EmployeeEntity etc.,)
+   use @Table annotation and mention the database table name.
+   use @Column annotation with the column name for all properties that should be stored in the database.
+
+   prefer using "Long" wrapper class name for primary keys.
+
+   
+   @Id
+   @Column(name = "cust_id")
+   private Long custId;
+
+
+   use BigInteger, BigDecimal for currency related properties.
+   mention the width as "19".
+
+   @Column(name = "account_bal", length = 19)
+   private BigDecimal accountBal;
+
+
+   for String properties, mention the length. otherwise in database it occupy more space.
+
+   @Column(name = "cust_name", length = 20)
+   private String custName;
+
+
+
+   for all model classes, add "Model" suffix.
+   eg: CustomerModel
+
+
    service interface
    service implementation without any code
-
-5) write test cases for service layer.
-   mock the dao.
-
-   run the test cases (both positive and negative). all the test cases should fail
-   (but if any test case return null, that will pass)
-
 
 aritifacts:
 ----------
@@ -37,11 +61,23 @@ aritifacts:
 2) test case template
 3) redraw class diagrams, use case diagrams, sequence diagrames, er diagrams
    (rational rose or anyother tool)
+4) database diagram
+
 
 
 ----------------------------------------------------------------------------------------------------------------------
 
+Day - 2		
+--------
 
+1) complete all artifacts.
+2) in the requirement sheet, mention the team member name who is responsible for that requirement.
+2) complete all test cases.
+3) start writing service layer implementations.
+   make sure that all test cases are executed successfully.
+
+
+---------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -93,7 +129,7 @@ public class CustomerEntity {
 
 
 
-3) Test Driven Development
+4) Test Driven Development
 	we will write the test cases.
 	in junit, unit means "class".  (class under test)
 
@@ -103,17 +139,24 @@ public class CustomerEntity {
 	so that we don't need to talk to database for testing purpose.
 
 
-4) create as many user defined exception class as require. so that code is more readable and manageable.
 
-EMParser	(EntityModelParser : to convert all model to entity and vice versa)
+5) write test cases for service layer.
+   for each method write both positive and negative test cases.
+   mock the dao.
+
+   run the test cases. all the test cases should fail.
+   (but if any test case return null, that will pass)
+
+
+
+6) create as many user defined exception class as require. so that code is more readable and manageable.
+
+EMParser	(EntityModelParser : to convert model to entity and vice versa)
 model
 entity
 dao interface
 service interface
 create service implementation class, but don't write any code in the overrided methods.
-
-5) for every operation in the service layer,both positive and negative test cases.
-	add(loan)
 
 
 6) In ServiceImpl classes, inject EMParser along with other classes like repo.
@@ -132,8 +175,10 @@ constructor definition like ...
 
 8) We will have Model class	- LoanModel  - 	(All validations)
    and also an Entity class	- LoanEntity -  (It is related to DB, all JPA annotations it contains)
+
 9) In each Model class, we have to override equals() and hashcode() method (apart from constructors, setters and getters
    and toString()
+
 10) In each Entity class, use JPA annotations. No need to override equals() and hashcode() method.
 
 	provide data -> model -> validations are performed using service layer
@@ -147,24 +192,15 @@ constructor definition like ...
 12) used streams wherever possible
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	
-anuj khare -     8319702841
-prajjwalchauhan093@gmail.com
-Naman jain - 7417176755
+Common Instructions (Before Sprint-1 presentation)
+---------------------------------------------------
+1. every team member should be able to explain the project clearly. 
+2. make sure that entire project contain proper comments.
+3. every body should have the entire project.
+4. and execute it and run the test cases also.
+5. modify the ppt. include your slides - class diagrams, sequence diagrams, er diagrams.
+
 
 
 

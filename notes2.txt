@@ -1,0 +1,466 @@
+                            	Module - 3 (UI)
+                                ===============
+HTML 5
+---------------------------------
+HyperText Markup Language
+
+Hypertext : Plain Text + Hylerlinks + Audio + Video + images
+
+HTML TAG
+    <p>, <h1>, <a>, <div>, <img>
+HTML ELEMENT
+    <p>This is a paragraph</p>
+
+<!DOCTYPE html> - it is also known as PI ( ??? )
+
+SEO     (Search Engine Optimization) instructions are written in
+        head section.
+Web Crawlers
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <keywords>java,tutorial,beginners,programming,programs</keywords>
+        <title>This is a title</title>
+    </head>
+    <body>
+    </body>
+</html>
+
+head tag is meant for writing meta-data.
+is mainly used by search engine.    (google, bing)
+
+HTML programs must be save with ".html" or ".htm" 
+is HTML also a case sensitive? - NO.
+but lowercase is STANDARD.
+
+
+Popular IDE:
+------------
+1) Visual Studio Code - (Emmet Extension)
+2) Atom
+3) Sublime 
+many more ...
+
+types of web sites:
+-------------------
+There are 2 types of websites
+1) static       (will present only static content - blogs)
+2) dynamic      (content will change every now and then - banking web site,
+                    reservation)
+
+what is the difference between paired tags and unpaired tags (self-closing tags)?
+
+    <p>some paragraph</p>
+    <img />  
+    <input />
+    <br />
+    <hr />
+
+e-commerce 
+    web site designing
+    book a domain   (www.your-web-site.in)
+    host it         purchasing space in web server
+    seo
+
+a tag contain attributes.
+an attribute is a key-value pair.
+
+<img height="30" width="25" src="1.jpg" />
+
+heading tags:
+    h1,h2,h3,h4,h5,h6
+    
+formatting tags:
+    <b>, <i>, <u>, <sup>, <sub>
+    <div>
+
+what is the difference between <div> and <span> ?
+    ...
+
+HTML 5 recommend  semantic tags.
+    instead of <b> it is recommended to use <strong>
+    instead of <i> use <em>  (emphasize)
+    
+    <header>
+    <section>
+    <footer>
+    <nav>
+    <article>
+
+
+
+
+
+
+
+    <p>
+        C
+        C++
+        java
+        Spring
+    </p>
+
+output:
+--------
+CC++javaSpring
+
+    <pre>
+        C
+        C++
+        java
+        Spring
+    </pre>
+
+output:
+--------
+        C
+        C++
+        java
+        Spring
+
+hr  :   horizontal ruler
+
+html elements are of 2 types.
+1) block elements       <h1>, <p>, <div>
+2) inline elements      <span>, <b>, <i>
+
+<h1>this is heading-1</h1>
+<h2>this is heading-2</h2>
+
+images:
+--------
+never use "height" attribute.
+because if we specify width, the height is adjusted proportionately.
+
+anchor tags:
+-----------------
+<a
+href        hyperlink reference
+
+
+lists:
+------
+ordered  <ol>, <li>     (numbered list)
+    type="" I, i, A, a
+unordered <ul>          (bulleted list)
+    type="square | circle | disc"
+<ol>
+    <li>java</li>
+    <li>python</li>
+    <li>ruby</li>
+    <li>c#</li>
+</ol>
+
+
+design a web page that show the following output.
+----------------------------------------------------
+ToC
+    1. Core java
+        a. OOP
+        b. Collections
+        c. Streams
+        d. Exception Handling
+        e. JDBC
+    2. Database
+        a. PostGre
+    3. Code Quality Analysis 
+        a. Sonar Qube
+        b. Sonar Lint
+        c. PMD
+    4. UI
+        a. React
+        b. Angular
+        c. Vue
+
+
+<table>
+<tr>    : table row 
+<th>    : table heading
+<td>    : table data
+<caption> : table caption
+
+HTML 5 offer semantic tags:
+-------------------------------
+<thead>
+<tfoot>
+<tbody>
+instead of <b>, use <strong> tag
+instead of <i>, use <em> tag    (em stands for emphasize)
+
+attributes:
+-----------
+border
+width
+align
+
+cellpadding
+cellspacing
+
+HTML Entities:
+---------------
+&#8377;     (for INR)
+
+
+
+comments:
+-------------
+<!--
+    write any 
+    comment in
+    many lines also
+-->
+
+
+images:
+------------
+<img />
+src
+width
+height      (NOT RECOMMEDED)
+
+Entire web page is designed using <table> tags.
+However this is not STANDARD.
+Instead of <table>, use always <div> tag.
+
+
+<div>       is a BLOCK element
+<p>         is a BLOCK element
+<span>      is an Inline element
+
+colspan attribute : to merge columns
+rowspan attribute : to merge rows
+
+
+frameset, frame
+    one web page can be divided into multiple parts.
+    each part is known as frame.
+    collection of frames is known as frameset.
+    in one frame, we can display one web page (.html)
+
+    but this is a deprecated.
+    instead of use div.
+
+iframe
+    internal frame.
+    this is again a standard.
+    in one iframe, we can display a page, we can play an audio, video etc.,
+
+
+form controls
+    form
+    input
+        type="text | password | number | date | time | email | file"
+
+    <input type="submit" value="Save" />
+    <input type="reset" value="Reset" />
+
+    button
+        type="submit"
+        type="button"
+        type="reset"
+
+    check boxes
+        <input type="checkbox" />
+    radio buttons
+        <input type="radio" />
+
+    drop down list          (allow us to choose only one item)
+        <select>
+        </select>
+    list                    (to select multiple items)
+        <select>
+        </select>
+
+    file upload control
+        input type="file"
+
+        validation attributes
+            required
+            min
+            max
+            pattern
+
+HTML 5 Features:
+-------------------
+<!DOCTYPE html>
+
+semantic tags   - thead, tbody, tfoot   
+        <header>
+        <footer>
+        <section>
+        <article>
+        <nav>
+
+
+frame-example.html
+----------------------------------------
+<frameset cols="20%,*">
+	<frame src="Page1.html" />
+	<frameset rows="20%,*">
+		<frame src="Page2.html" />
+		<frame src="Page3.html" />
+	</frameset>
+</frameset>
+
+don't write any <html>, <head>, <body> tags.
+
+
+video control
+-----------------------------------------
+<body>
+    <video title="Testing Video"  controls width="500" height="500" 
+            poster="html5.jpg">
+		<source src="numbersvideo.m4v"  />
+        Sorry! Browser doesn't support HTML5
+    </video>
+</body>
+
+audio control
+-----------------------------------------
+<audio id="mysong" controls="controls">
+    <source src="SleepAway.mp3" />
+    You need a browser that supports HTML5!
+</audio>
+
+
+
+                            CSS - 3
+                            =======
+                            
+It stands for Cascading Style Sheets.
+It is a language that can define the appearance of an HTML element.
+There are three different ways to apply styling to an HTML page.
+1) In-line styles
+    It is applied for each element using it's style attribute.
+    <tagName style="css-property:value; css-property:value;">
+        TagContent
+    </tagName>
+
+
+    CSS Properties:
+    ------------------------------------------------
+    width               pixels. precentages, mm, cms
+    height
+    margin
+    padding
+    border
+
+    color               colorName, hexaCode (#000000 - #FFFFFF)
+    background-color
+
+    text-align
+    font-family
+    font-weight
+
+2) Embedding styles
+    CSS style is written in <style> </style> element.
+    <style></style> is defined in <head></head>.
+
+    <html>
+        <head>
+            <style>
+                selector {
+                    css-property : value;
+                }
+            </style>
+        </head>
+        <body>
+        </body>
+    </html>
+
+    what are selectors?
+    -------------------
+    selector is a simple string that can select a group of elements to which the 
+    style has to be appplied.
+
+    there are FIVE (5) types.
+    1. Tag name selector
+            the name of the tag act as a selector.
+            so that all elements with that tag name is applied with style defined.
+
+            p {
+                text-align : center;
+            }
+
+    2. Attribute selector
+            these are used to group elements by it's attribute.
+            attribute must be placed in [ ] square brackets.
+
+            [type] {
+                width: 200px;
+            }
+            
+    3. Class selector
+            class is a user-defined string, that can applied as class attribute to all those tags to which 
+            we wish to apply a style.
+            class selector must be defined with .   (dot)
+
+            .imp {
+                text-decoration : underline;
+            }
+
+            <p class=".imp"></p>
+    
+    4. ID selector
+            is used to apply a style to one particular element, which has refererd by this id.
+            id selector must be defined wuth # (hash)
+
+            #tagId {
+                border : 1px;
+            }
+
+    5. pseudo selector
+
+        we will discuss these selectors.
+
+
+
+    CSS Selector Operators:
+    -----------------------
+    s1 , s2     applies to elements that match both selectors
+    s1   s2     applies to all elements that match s2 and are inside s1
+    s1 > s2     applies to all elements that match s2 whose parent is s1
+    s1 + s2     applies to all elements that match s2 and are immediately after s1
+    s1 ~ s2     applies to every element that match s2 and is preceded by s1
+
+            applies to all elements that have
+            ---------------------------------
+    [s1]            s1 as attribute
+    [s1 = 'v1']     s1 attribute with value v1
+    [s1 ~= 'v1']  (or)  [s1 *= 'v1']
+                    s1 attribute contains word v1  (same as above - these are TWO ways)
+    [s1 != 'v1']    s1 attribute not equal to  v1
+    [s1 ^= 'v1']    s1 attribute starts with the word v1
+    [s1 $= 'v1']    s1 attribute ends with the word v1
+
+    pseudo selectors
+    ----------------
+    input:enabled       selects every enabled <input> element
+    p:first-child       selects every <p> element that is the first child of it's parent
+    p:first-letter      selects the first=letter of every <p> element
+    p:first-line        selects the first-line of every <p> element
+    p:first-of-type     selects every <p> element that is the first <p> element of its parent
+    
+    input:focus         selects the input element which has focus
+    a:hover             selects link on mouse over
+    
+    input:in-range      selects input elements with a value within a specified range
+    input:indeterminate selects input elements that are in an indeterminate state
+    input:invalid       selects all input elements with an invalid value
+    input:optional      selects all input elements with no "required" attribute
+
+    p:last-child        select every <p> element that is the last child of it's parent
+    p:last-of-type      select every <p> element that is the last <p> element of it's parent
+
+    a:link              select all unvisited links
+    :not(p)             select every element that is not <p> elements
+    p:nth-child(2)      select all <p> elements that is 2nd child of it's parent
+    p:nth-last-child(2) select all <p> elements that is 2nd last child of it's parent
+
+
+
+3) External styles
+    styles are defined in a separate ".css" file.
+    this file is linked in html file using <link> tag inside <head> section.
+    so that those styles are applied in that html file.                            

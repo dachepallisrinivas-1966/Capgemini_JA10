@@ -1,0 +1,51 @@
+body {
+    background-color:#c0c0c0;
+}
+h2 {
+    background-color:#0c0c0c; 
+    color:#ffffff; 
+    padding:15px;
+    margin:20px;
+    margin-bottom:0px;
+}
+p {
+    background-color:#ffffff;
+    margin : 0px 15px 0px 15px;         /* top left bottom right */
+    padding:10px;
+}
+
+form {
+    background-color:#acacac;
+    margin : 0px 15px 0px 15px;         /* top left bottom right */
+    padding:10px; 
+}
+
+input {
+    display:block;      /* to convert inline elements into block elements vice-versa */
+    width:98%;
+    margin:5px;
+    padding:5px;
+}
+
+/* attribute selectors */
+[type="number"] {
+    text-align : right;
+}
+
+[type="date"] {
+    text-align : center;
+}
+
+/* class selectors */
+.imp {
+    text-decoration : underline;
+}
+
+.highlight {
+    font-weight: 800;
+}
+
+/* id selector */
+#txtAge {
+    border : 1.5px dotted #000000;      /* dotted | dashed */
+}
