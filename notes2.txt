@@ -505,6 +505,77 @@ There are three different ways to apply styling to an HTML page.
         .container-fluid    creates a full fixed width container
 
 
+jumbotron
+navbars
+lists
+tables
+forms
+images
+cards
+
+
+                                    ES6 (ECMA Script 6)
+                                    ===================
+
+browser has a javascript engine (V6 engine) that executes your java script code.
+Java script is a client side scripting language.
+Java script also support server side scripting.
+
+MEAN Stack 
+    Mongo DB (No SQL Database)
+    Express JS (server server script)
+    Angular (client side )
+    Node    (runtime environment)
+
+MERN Stack
+    Mongo DB (No SQL Database)
+    Express JS (server server script)
+    React JS (client side )
+    Node    (runtime environment)
+
+we can execute javascript program on NODE.
+any javascript program  should be saved with an extension ".js" (external)
+you can write javascript program inside the HTML also.
+variable declaration is always optional.
+javascript is type-less.
+javascript is dynamic.
+
+In javascript functions are treated as FIRST CLASS CITIZENS.
+
+functions
+    no params no return type
+    have params no return type
+    hava params have return type
+
+1) we can pass a function-name as parameter to another function.
+2) we can return a function from another function.
+
+
+
+we can assign a variable to a function definition.
+
+var a = function () {
+        return "hello";    
+}
+
+a();    
+
+
+var and let keyword:
+---------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
