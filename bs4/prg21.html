@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <title>Buttons & Button Groups</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Buttons & Button Groups</h1>
+
+        <!-- BUTTON CLASSES -->
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-success">Success</button>
+        <button class="btn btn-info">Info</button>
+        <button class="btn btn-warning">Warning</button>
+        <button class="btn btn-danger">Danger</button>
+        <button class="btn btn-light">Light</button>
+        <button class="btn btn-dark">Dark</button>
+        <button class="btn btn-link">Link</button>
+
+        <br><br>
+        <!-- BUTTON TAGS / TYPES -->
+        <a class="btn btn-primary" href="#">Primary Link</a>
+        <input class="btn btn-secondary" type="button" value="Submit" />
+        <input class="btn btn-info" type="button" value="Reset" />
+
+        <br><br>
+        <!-- BUTTON OUTLINE CLASSES -->
+        <button class="btn btn-outline-primary">Primary Outline</button>
+        <button class="btn btn-outline-secondary">Secondary Outline</button>
+        <button class="btn btn-outline-success">Success Outline</button>
+        <button class="btn btn-outline-info">Info Outline</button>
+
+        <br><br>
+        <!-- BUTTON SIZES -->
+        <button type="button" class="btn btn-primary btn-lg">
+            <i class="fas fa-user"></i> Large Button
+        </button>
+        <button type="button" class="btn btn-success btn-sm">
+            Small Button
+        </button>
+        
+        <br><br>
+        <button type="button" class="btn btn-dark btn-block">
+            Block Level Button
+        </button>
+
+        <br><br>
+        <!-- BUTTOM STATES -->
+        <button type="button" class="btn btn-primary active">
+            Active Button
+        </button>
+        <button type="button" class="btn btn-primary disabled">
+            Disable Button
+        </button>
+        <button type="button" class="btn btn-primary" 
+            data-toggle="button">
+            Toggle Button
+        </button>
+
+        <br><br>
+        <!-- BUTTON GROUPS & TOOL BAR-->
+        <div class="btn-toolbar">
+            <div class="btn-group mr-2">
+                <button class="btn btn-primary" type="button">1</button>
+                <button class="btn btn-primary" type="button">2</button>
+                <button class="btn btn-primary" type="button">3</button>
+                <button class="btn btn-primary" type="button">4</button>
+            </div>
+            <div class="btn-group mr-2">
+                <button class="btn btn-secondary" type="button">5</button>
+                <button class="btn btn-secondary" type="button">6</button>
+                <button class="btn btn-secondary" type="button">7</button>
+                <button class="btn btn-secondary" type="button">8</button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-primary" type="button">9</button>
+                <button class="btn btn-primary" type="button">10</button>
+            </div>
+        </div>
+        
+        <br><br>
+        <!-- BUTTON DROPDOWN -->
+        <div class="dropdown">
+           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                My Dropdown
+            </button> 
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Link One</a>
+                <a class="dropdown-item" href="#">Link Two</a>
+                <a class="dropdown-item" href="#">Link Three</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

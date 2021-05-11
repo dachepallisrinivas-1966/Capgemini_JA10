@@ -463,4 +463,60 @@ There are three different ways to apply styling to an HTML page.
 3) External styles
     styles are defined in a separate ".css" file.
     this file is linked in html file using <link> tag inside <head> section.
-    so that those styles are applied in that html file.                            
+    so that those styles are applied in that html file.    
+
+                                                Bootstrap 4
+                                                ------------
+    Bootstrap is a CSS library.
+    contain lot many pre-defined css classes.
+    we can customize these classes also.
+
+    It offer Grid system.
+    Page can be divided into rows and columns.
+    each row can accomodate 12 columns.
+    one cell can occupy more than one column as well.
+    each row is represented by a class called "row".
+    each col is idenetified by a class called "col-colType-colSize"
+
+    colType 
+        xs      extra small
+        sm      small
+        md      medium
+        lg      large
+    eg:
+        col-xs-3
+        col-lg-1
+
+    How to integrate Bootstrap?
+        it contain bootstrap-4.min.css
+        we can download this file from bootstrap web site
+        (or)
+        we can use CDN (content delivery network)
+        refer this file in <link> tag.
+
+    1) html 5 doctype
+    2) use lang attribute and set it to english
+    3) also do set the char set.
+    4) mobile first approach
+    thus add the view port conf as meta tag.
+
+    bootstrap container classes
+        .container          creates a fixed width container
+        .container-fluid    creates a full fixed width container
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+                            

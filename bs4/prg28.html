@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <title>Working with cards</title>
+
+</head>
+
+<body>
+
+    <h2>Working with cards</h2>
+
+    <!-- BLOCK -->
+    <div class="card">
+        <div class="card-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur harum perspiciatis
+            laudantium sint ipsum, placeat, provident quia quo qui maxime temporibus illum error dolor, natus iusto
+            sapiente nemo
+            deserunt tenetur!
+        </div>
+    </div>
+
+    <!-- SIMPLE CARD -->
+    <div class="card" style="width:20rem;">
+        <div class="card-body">
+            <h4 class="card-title">Card Title</h4>
+            <h6 class="card-subtitle text-muted">card subtitle</h6>
+            <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione harum quas ducimus
+                sit sequi non suscipit aspernatur, eum vitae atque!</p>
+            <a class="btn btn-outline-primary" href="#">Read More</a>
+        </div>
+    </div>
+
+    <!-- CARD WITH IMAGE -->
+    <div class="card" style="width:30%">
+        <img class="card-img-top" src="https://source.unsplash.com/random/300x200" alt="">
+        <div class="card-body">
+            <h4 class="card-title">Card Title</h4>
+            <h6 class="card-subtitle text-muted">card subtitle</h6>
+            <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione harum quas ducimus
+                sit sequi non suscipit aspernatur, eum vitae atque!</p>
+            <a class="btn btn-success btn-block" href="#">Read More</a>
+        </div>
+    </div>
+
+    <!-- CARD WITH HEADER -->
+    <div class="card" style="width:30%;">
+        <div class="card-header">
+            My Card
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Card Title</h4>
+            <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione harum quas ducimus
+                sit sequi non suscipit aspernatur, eum vitae atque!</p>
+            <a class="btn btn-danger" href="#">Read More</a>
+        </div>
+    </div>
+
+    <!-- HEADER, FOOTER, CENTERED -->
+    <div class="card text-center" style="width:30%;">
+        <div class="card-header">
+            My Card
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Card Title</h4>
+            <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione harum quas ducimus
+                sit sequi non suscipit aspernatur, eum vitae atque!</p>
+            <a class="btn btn-dark" href="#">Read More</a>
+        </div>
+        <div class="card-footer text-muted">
+            2 days ago
+        </div>
+    </div>
+
+    <!-- CARD WITH NAV -->
+    <div class="card" style="width:30%;">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Active</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Card Title</h4>
+            <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione harum quas ducimus
+                sit sequi non suscipit aspernatur, eum vitae atque!</p>
+            <a class="btn btn-primary" href="#">Read More</a>
+        </div>
+        <div class="card-footer text-muted">
+            2 days ago
+        </div>
+    </div>
+
+    <!-- IMAGE OVERLAYS -->
+    <div class="card text-white" style="width:30%">
+        <img class="card-img" src="https://source.unsplash.com/random/300x200" alt="">
+        <div class="card-img-overlay">
+            <h4 class="card-title">Card Title</h4>
+            <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione harum quas ducimus
+                sit sequi non suscipit aspernatur, eum vitae atque!</p>
+            <a class="btn btn-success btn-block" href="#">Read More</a>
+        </div>
+    </div>
+
+    <!-- BACKGROUND COLOR -->
+    <div class="card bg-primary text-white" style="width:30%;">
+        <div class="card-header">
+            My Card
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Card Title</h4>
+            <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione harum quas ducimus
+                sit sequi non suscipit aspernatur, eum vitae atque!</p>
+            <a class="btn btn-danger" href="#">Read More</a>
+        </div>
+    </div>
+
+    <!-- CARD OUTLINE -->
+    <div class="card border-primary" style="width:30%;">
+        <div class="card-body">
+            <h4 class="card-title">Card Title</h4>
+            <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione harum quas ducimus
+                sit sequi non suscipit aspernatur, eum vitae atque!</p>
+            <a class="btn btn-danger" href="#">Read More</a>
+        </div>
+    </div>
+
+    <!-- CARD COLUMNS -->
+    <div class="card-columns">
+        <div class="card">
+            <img class="card-img-top img-fluid" src="https://source.unsplash.com/random/300x200" alt="">
+            <div>
+                <h4 class="card-title">Card Title</h4>
+                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione harum quas
+                    ducimus
+                    sit sequi non suscipit aspernatur, eum vitae atque!</p>
+                <a class="btn btn-danger" href="#">Read More</a>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top img-fluid" src="https://source.unsplash.com/random/300x200" alt="">
+            <div>
+                <h4 class="card-title">Card Title</h4>
+                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione harum quas
+                    ducimus
+                    sit sequi non suscipit aspernatur, eum vitae atque!</p>
+                <a class="btn btn-danger" href="#">Read More</a>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top img-fluid" src="https://source.unsplash.com/random/300x200" alt="">
+            <div>
+                <h4 class="card-title">Card Title</h4>
+                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione harum quas
+                    ducimus
+                    sit sequi non suscipit aspernatur, eum vitae atque!</p>
+                <a class="btn btn-danger" href="#">Read More</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

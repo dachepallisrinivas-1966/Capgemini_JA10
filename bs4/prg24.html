@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <title>Forms & Input</title>
+
+</head>
+
+<body>
+
+    <h2>Forms & Input</h2>
+
+    <div class="container">
+
+        <!-- FORM -->
+        <form>
+            <!-- TEXT FIELD GROUPS -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" id="name" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input class="form-control form-control-lg" type="email" id="email" placeholder="Enter email">
+                <small class="form-text text-muted">Your email will not ever be shared</small>
+            </div>
+            <div class="form-group">
+                <label for="company">Company</label>
+                <input class="form-control form-control-sm" type="text" id="company" placeholder="Enter company name">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" type="password" id="password" placeholder="Password" readonly>
+            </div>
+
+            <!-- SELECT -->
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select class="form-control" id="gender">
+                    <option>Male</option>
+                    <option>Female
+                </select>
+            </div>
+
+            <!-- TEXT AREA -->
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea class="form-control" id="message" rows="3">
+                </textarea>
+            </div>
+
+            <!-- FILE INPUT -->
+            <div class="form-group">
+                <label for="file">File input</label>
+                <input type="file" class="form-control-file" id="file">
+                <small class="form-text text-muted" id="fileHelp">Max 3 MB file</small>
+
+
+                <!-- CUSTOM FILE INPUT -->
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="myFile">
+                    <label class="custom-file-label" for="myFile">Choose File</label>
+                </div>
+            </div>
+
+            <!-- RANGE -->
+            <div class="form-group">
+                <label for="membership">Membership Level</label>
+                <input class="custom-range" type="range" id="membership" min="1" max="5" step="1" value="1">
+            </div>
+
+            <br>
+            <button class="btn btn-primary btn-block" type="submit">Submit</button>
+        </form>
+
+        <br><br>
+
+        <!-- INLINE FORM -->
+        <form class="form-inline">
+            <input class="form-control mr-2" type="text" id="username" placeholder="Enter username">
+            <input class="form-control mr-2" type="password" id="password" placeholder="password">
+            <div class="form-check">
+                <label class="form-check-label mr-2">
+                    <input type="checkbox" class="form-check-input">Remember me
+                </label>
+            </div>
+            <button class="btn btn-light" type="submit">Submit</button>
+        </form>
+
+        <br><br>
+
+        <!-- FORM ROW (Grid Style) -->
+        <form>
+            <div class="form-row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="First Name">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Last Name">
+                </div>
+            </div>
+        </form>
+
+        <br><br>
+
+        <!-- VALIDATIONS -->
+        <div class="form-group">
+            <label for="username">User name</label>
+            <input class="form-control is-valid" type="text" id="username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input class="form-control is-invalid" type="password" id="password">
+            <!-- The following feedback is displayed only when is-invalid class is added for the input control -->
+            <div class="invalid-feedback">
+                Password not strong enough
+            </div>
+
+
+        </div>
+        <div class="form-group">
+            <label for="password2">Password</label>
+            <input class="form-control is-invalid" type="password" id="password2">
+            <!-- The following feedback is displayed only when is-invalid class is added for the input control -->
+            <div class="invalid-feedback">
+                Password does not match
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
