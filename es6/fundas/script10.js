@@ -31,9 +31,9 @@ console.log(greetUser("Vamsy", timelyGreetProvider));
 
 console.log(greetUser("Vamsy", function () { return "Sasriakal ";}));
 
-// console.log(greetUser("Vamsy",()=>"Namasthey "));
-// console.log(greetUser("Vamsy",()=>"Vanakkam "));
-// console.log(greetUser("Vamsy",()=>"Namaskar "));
+console.log(greetUser("Vamsy", ()=>"Namasthey "));
+console.log(greetUser("Vamsy",()=>"Vanakkam "));
+console.log(greetUser("Vamsy",()=>"Namaskar "));
 
 // IIFE - Immediately Invoked Function Expression
 
