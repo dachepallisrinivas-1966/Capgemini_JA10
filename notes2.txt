@@ -560,24 +560,88 @@ var a = function () {
 
 a();    
 
+                            Angular
+                            =======
 
-var and let keyword:
----------------------
+npm install         (to install node libraries)
+npm start           (ng serve)
+npm build           (ng build)
+npm test            (ng test)
 
+node_modules
+package.json        (short cuts for npm commands, list of dependencies)
+angular.json        (entries for styles and scripts)
 
-
-
-
-
-
-
-
-
-
-
-
+.gitignore
+README.md       
 
 
+                        Angular Architecture
+                        ====================
+1) modules
+        i) root module      (app module)
+        ii) feature modules (sub modules)
+2) components
+    a class that is marked with @Component decorator.
+    also contain meta data like ...
+        i) selector : tag name
+        ii) templateUrl : view file name
+        iii) template
+        iii) styleUrls : array of css files
+
+    apart from this information, component can also contain code.
+
+3) directives
+4) services
+5) pipes
+
+src -> app
+            i) app.module.ts
+           ii) app.component.ts
+          iii) app.component.html
+           iv) app.component.css
+            v) app.component.spec.ts    (test script) 
+        src -> assets
+            images, videos, audios
+        environments
+            environment.ts          (development environment)
+            environment.prod.ts     (production environment)
+        favicon.ico
+        index.html
+        main.ts
+        styles.css      (global style)
+
+proj1> ng serve
+
+    vendor.js             
+    polyfills.js          
+    styles.css, styles.js 
+    main.js               
+    runtime.js
+
+interpolation (one-way data binding)
+------------------------------------
+{{ variable }}
+
+bindings:
+--------
+1) style binding
+2) attribute binding
+3) class binding
+4) event binding
+5) two-way data binding
+
+angular-cli commands
+=====================
+1) ng  generate    component   <component-name>
+(or)
+ng  g c <component-name>
+
+to get rid of spec.ts:
+-----------------------
+2) ng  generate    component   <component-name> --skipTests
+(or)
+ng  g c <component-name> --skipTests
 
 
 
@@ -589,5 +653,3 @@ var and let keyword:
 
 
 
-    
-                            
