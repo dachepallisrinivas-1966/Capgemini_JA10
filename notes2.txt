@@ -619,17 +619,29 @@ proj1> ng serve
     main.js               
     runtime.js
 
-interpolation (one-way data binding)
-------------------------------------
-{{ variable }}
+Data Binding
+============
+    1) Interpolation
 
-bindings:
---------
-1) style binding
-2) attribute binding
-3) class binding
-4) event binding
-5) two-way data binding
+        {{angular-expression}}
+
+    2)  One-Way Attribute Binding
+
+        [attribute]="angular-expression"
+
+    3) Two-Way Attribute Binding
+
+        [(attribute)]="angular-expression"
+
+        ngModel         FormsModule
+    
+        [(ngModel)] 
+        in order to use [(ngModel)] you have to import FormsModule in app.module.ts
+        in imports section, we have to include FormsModule.
+
+    4) Event Binding
+
+        (eventAttribute)="angularFunction()"
 
 angular-cli commands
 =====================
@@ -642,6 +654,37 @@ to get rid of spec.ts:
 2) ng  generate    component   <component-name> --skipTests
 (or)
 ng  g c <component-name> --skipTests
+
+
+Structural directives
+=====================
+Structural Directives are directives which change the structure of the 
+DOM (Document Object Model) by adding or removing elements.
+
+There are three built-in structural directives
+
+*ngIf
+*ngFor = "let var of arrayName"
+*ngSwitch
+
+
+Pipes
+=====
+used to format the output.
+
+built-in pipes
+--------------
+1) UpperCasePipe
+2) LowerCasePipe
+3) TitleCasePipe
+4) DecimalPipe
+5) PercentPipe
+6) DatePipe
+7) JsonPipe
+8) SlicePipe
+
+
+
 
 
 

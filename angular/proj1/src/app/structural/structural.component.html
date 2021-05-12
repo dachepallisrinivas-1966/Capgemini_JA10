@@ -1,0 +1,14 @@
+<section>
+    <div>
+        <label>Book Title: </label>
+        <input type="text" placeholder="book name here" [(ngModel)]="bookTitle" />
+        <button (click)="addBook()">Add Book</button>
+    </div>
+    <p *ngIf="count!=0">Number of Books : {{ count }}</p>
+    <div>
+        <h3 *ngIf="books.length!=0">List of Books</h3>
+        <ul *ngFor="let b of books">
+            <li>{{ b }}</li>
+        </ul>
+    </div>
+</section>

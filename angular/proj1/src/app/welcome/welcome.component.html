@@ -1,3 +1,13 @@
 <section>
-    <img [src]="imageUrl" />
+    <img [src]="imageUrl" /> <br />
+    {{ title }} <br />
+    User Name : <input type="text" placeholder="your name" [(ngModel)]="userName"/>
+    <button type="submit" (click)="greetUser()">Greet</button>
+    {{ msg }}
+    <p [ngClass]="currentClasses">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, reprehenderit praesentium! Eius blanditiis sapiente tenetur perferendis at, aliquam ex nisi porro facere ipsam consequuntur, laboriosam ducimus fugiat ipsum itaque, provident nemo. Ad inventore voluptas, a voluptatum quisquam accusamus iusto natus quis. Voluptates praesentium quisquam architecto ut. Corporis minima at adipisci?</p>
+    <div [ngStyle]="brightRed">This is bright red</div>
+
+    <p [class]="{makeBold:isBold,makeItalic:isItalic}"> {{ paraContent }}</p>
+    <label><input type="checkbox" name="c1" [(ngModel)]="isBold" />Bold</label>
+    <label><input type="checkbox" name="c1" [(ngModel)]="isItalic" />Italic</label>
 </section>

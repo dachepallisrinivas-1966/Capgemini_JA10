@@ -1,0 +1,14 @@
+.special {
+    font-style: italic;
+}
+.big {
+    font-size: 25px;
+}
+
+.makeBold {
+    font-weight:bold;
+}
+
+.makeItalic {
+    font-style: italic;
+}
