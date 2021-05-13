@@ -1,4 +1,42 @@
 <section>
-    numData : {{ numData }}    
-    formatted : {{ numData | number : '3.2-2'}}
+    <div>
+        numData : {{ numData }} <br />
+        formatted : <strong>{{ numData | number : '3.2-2'}}</strong> <br />
+    </div>
+    <div>
+        stringData : {{ stringData }} <br />
+        upperCaseString : <strong>{{ stringData | uppercase }}</strong> <br />
+        lowerCaseString : <strong>{{ stringData | lowercase }}</strong> <br />
+        titleCaseString : <strong>{{ stringData | titlecase }}</strong> <br />
+    </div>
+    <div>
+        dateData : {{ dateData }} <br />
+        formatteddate : <strong>{{ dateData | date : 'dd-MMM-yyyy' }}</strong> <br />
+        {{dateData | date : 'short'}} <br>
+        {{dateData | date : 'medium'}} <br>
+        {{dateData | date : 'dd-MM-yyyy'}} <br>
+        {{dateData | date : 'dd-MMMM-yyyy'}} <br>
+        {{dateData | date : 'h:m:s a'}} <br>
+    </div>
+    <div>
+        precentData : {{ percentData }} <br />
+        formattedPercent : <strong>{{ percentData | percent }}</strong> <br />
+    </div>
+    <div>
+        months : {{ months }} <br />
+        slicedData : <strong>{{ months | slice : 2 : 5 }}</strong> <br />
+    </div>
+    <div>
+        jsonData : {{ jsonData }} <br />
+        formattedJsonData : <strong>{{ jsonData | json }}</strong> <br />
+    </div>
+    <div>
+        {{numData}} <br>
+        {{numData | currency : 'INR': 'code' : '3.2-2'}} <br>
+        {{numData | currency : 'INR': 'symbol' : '3.2-2'}} <br>
+        {{numData | currency : 'USD': 'symbol' : '3.2-2'}} <br>
+        {{numData | currency : 'EUR': 'symbol' : '3.2-2'}} <br>
+    </div>
+
+
 </section>

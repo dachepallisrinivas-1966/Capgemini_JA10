@@ -674,14 +674,397 @@ used to format the output.
 
 built-in pipes
 --------------
-1) UpperCasePipe
-2) LowerCasePipe
-3) TitleCasePipe
-4) DecimalPipe
-5) PercentPipe
-6) DatePipe
-7) JsonPipe
-8) SlicePipe
+
+
+
+
+
+
+
+
+
+
+
+Angular -  SPA Javascript Framework
+----------------------------------------
+
+        Single Page Application
+
+        Environment
+        ------------------
+        NodeJs                      development platform
+        NPM (node package manager)  dependency management tool    
+        TypeScript                  scripting language
+        Angular CLI                 development tool
+        VS Code                     ide
+
+
+        Angular CLI
+        ----------------------------------------------
+
+                managing the buiding blocks
+                        of an angular application
+
+        node --version
+        npm --version
+        ng --version
+
+        npm install -g @angular/cli
+        
+        npm install package-name --save
+        npm install package-name --save-dev
+
+        ng new angular-project-name
+
+        cd angular-project-name
+
+        ..\angular-project-name> npm install bootstrap --save
+        ..\angular-project-name> ng build                   build our angualr app
+        ..\angular-project-name> ng build --prod            build our angualr app production ready
+        ..\angular-project-name> ng serve --port 5656 -o    starts the Angular Live Development Server and launches chrome.
+
+        ..\angular-project-name> ng g module ModuleName
+        ..\angular-project-name> ng g component ComponentName
+        ..\angular-project-name> ng g directive DirectiveName
+        ..\angular-project-name> ng g pipe PipeName
+        ..\angular-project-name> ng g service ServiceName
+        ..\angular-project-name> ng g guard GuardName
+        ..\angular-project-name> ng g class ClassName
+        ..\angular-project-name> ng g interface InterfaceName
+
+        TypeScript
+        ---------------------------------------------
+
+                = Javascript + types
+
+                varibleName : type = value;
+
+                let n : number = 10;
+
+                        any
+                        string 
+                        number
+                        boolean                        
+                        void
+                        undefined
+
+                        class
+                        interface
+                        enum
+                        array
+
+
+        Angular Architecure (buiding blocks)
+        -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+            Module
+
+                        is a logical group of components, directives, pipes and services and
+                        other modules
+
+                        Root Module
+                                is the main module inside which the whole project
+                                resides.
+
+                        Feature Module
+                                the sub-modules that are contained by 
+                                a root module is called a feature module.
+
+                        @NgModule({
+                            declaration:[
+                                list of components,directives and pipes
+                            ],
+                            imports:[
+                                list of feature-modules
+                            ],
+                            providers:[
+                                list of services
+                            ],
+                            bootstrap:[
+                                list of components that are to be created after the module loads.
+                            ]
+                        })    
+                        export class MyModule {
+
+                        }
+
+            Directive
+
+                Component Directives   ===> Components
+
+                        @Component({
+                            selector:'my-component',
+                            template:'<p>{{welcomeMsg}}</p>',
+                            providers:[]
+                        })    
+                        export class MyComponent {
+
+                            welcomeMsg : string;
+
+                            constructor(){
+                                this.welcomeMsg="Hello Welcoem All";
+                            }
+
+                        }
+
+                        <html>
+                            <head>
+                            </head>
+                            <body>
+                                <my-component></my-component>
+                            </body>
+                        </html>
+
+                        <html>
+                            <head>
+                            </head>
+                            <body>
+                                <p>Hello Welcoem All</p>
+                            </body>
+                        </html>
+
+                Attribute Directives   ===> Directives
+
+                        @Directive({
+                            selector:'myattrib'
+                        })    
+                        export class MyDirective {
+
+                        }
+
+                        <div myattrib=""></div>
+              
+            Pipe
+
+                        is to transform a value into another.
+                        
+
+                        @Pipe({
+                            name:'mypipe'
+                        })    
+                        export class MyPipe {
+
+                        }
+
+                        value|mypipe
+
+
+            Service
+
+                        services are intended to provide bussiness logic.
+
+                        @Injectable({
+                            providedIn: 'root'
+                        })    
+                        export class MyService {
+
+                        }
+
+                        @Injectable({
+                            providedIn: 'any'
+                        })    
+                        export class MyService2 {
+
+                        }
+
+    Application Bundles
+    -------------------------------------------------------------
+    vendor.js      contains all angular library and any other
+                    third party libraries used in the application.
+
+    polyfills.js   is to provide support for modern browser.
+
+    styles.css, styles.js  is gonna containe the css style 
+    
+    main.js         is all the appliction that we wrote.
+
+    runtime.js      is a dynamic runtiem support for modern javascript.
+
+
+    styles
+    ----------------------------------
+        Global Styles
+            src/styles.css
+
+        Local Styles ( Component level styles)
+                component.css
+
+    Data Binding
+    -----------------------------------------------------
+
+        Component  =  Controller + Template
+
+        HeaderComponent = header.component.ts + header.component.html
+
+        Interpolation
+
+                {{ angular-expression }}
+
+        One-Way Data Binding
+
+                to bind a angular-expression value
+                with an attribute.
+
+                [attribName]="angular-expression"
+
+        Event Binding
+
+                (event-attribute)="fun()"
+
+                event-attribute directives
+                -----------------------------
+                click
+                dblclick
+                mouseover
+                mousedown
+                mouseup
+                keydown
+                keyup
+                blur
+                focus
+                ngSubmit
+
+        Two-way Data Binding
+
+            FormsModule                        
+                        ngModel
+        
+            <input type="text" [(ngModel)]="varName" />
+       
+        Style (classes) Binding
+
+            [class]="{classname1:true,classname2:false}"
+
+
+    Structural Directives
+    -----------------------------
+
+        *ngIf
+
+        *ngFor
+
+        ngSwitch
+            *ngSwitchCase
+            *ngDefault
+
+    Pipes
+    -------------------------------------
+
+    1) uppercase
+    2) LowerCasePipe
+    3) TitleCasePipe
+    4) DecimalPipe
+    5) PercentPipe
+    6) DatePipe
+    7) JsonPipe
+    8) SlicePipe
+    9) currency
+    
+    Angular Forms 
+    -----------------------------------
+
+        Template Driven Forms       
+
+                FormsModule
+                        ngForm
+                        ngModel
+
+            are good for small forms
+            more on template and less on controller
+            difficult to test
+
+        Model Driven Forms  / Reactive Forms
+
+            are good for complex forms
+            more on controller and less on template
+            easy to test
+
+                ReactiveFormsModule
+
+                        FormGroup
+                        FormControl
+
+    Service
+    -----------------------------------
+        is an injectable object that provides                       
+        bussiness logic. 
+
+
+    Routing
+    -----------------------------------
+
+        RouterModule
+
+        Routes  = an array of Route
+            
+            Route
+                    path:''
+                    compoennt:
+
+        Router      navigate programatically.
+           
+        ActivateRoute 
+                    always gives the current detials of the route.
+
+                        current route path
+                        params
+                        queryParams
+
+        routeLink   use on 'a' elements to hold the path
+
+        router-outlet   used for holding space
+                            where the targetted component must appear.
+
+
+    RxJS
+    -----------------------------------------------
+
+        setTimeout
+        setInterval
+
+        Observable  uses call back machanisim
+        to communicate witht eh foreground task.
+
+        let job = (observer) => {
+            .................
+             observer.next(val);  //emits a value
+            .....................
+             observer.error(err); //emit an err
+            ...............
+              observer.complete();  
+        }
+
+        let ob = new Observable(job);
+
+        ob.subscribe(
+            (data) => {}, //called in reposne to a value
+            (err) => {}. //called in reponse to the error
+            () => {} //called in response when the job completes.
+        );
+
+    Angular Component Life Cycle
+    -----------------------------------
+
+         LifeCycle                       Hooks
+
+    At the time of loading:         ngOnChanges
+                                    ngOnInit
+                                    ngDoCheck
+
+     compoennt data binding         ngOnChanges    
+     might change                   ngDoCheck
+                                    
+
+     Content Initialization         ngAfterContnetInit    
+                                    ngAfterContnetChecked    
+
+     Child View Initialization      ngAfterViewInit
+                                    ngAfterViewChecked
+
+     Destroy                        ngOnDestroy    
+
+    Routing
+
 
 
 
