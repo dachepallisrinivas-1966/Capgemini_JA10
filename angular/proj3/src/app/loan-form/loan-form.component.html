@@ -1,0 +1,40 @@
+<section class="container-fluid p-4">
+    <form class="form" (ngSubmit)="handleSubmit()" [formGroup]="loanForm">
+        <div class="form-group">
+            <label class="form-label">Principle : </label>
+            <input type="number" class="form-control" formControlName="principle" />
+        </div>
+        <div class="alert alert-danger" *ngIf="pfc.invalid && (pfc.touched || pfc.dirty)">
+            <span *ngIf="pfc.errors.required">this field is mandatory</span>
+            <span *ngIf="pfc.errors.min">atleast 1000 is expected</span>
+            <span *ngIf="pfc.errors.max">atmost 50000 is expected</span>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Time : </label>
+            <input type="number" class="form-control" formControlName="time" />
+        </div>
+        <div class="alert alert-danger" *ngIf="tfc.invalid && (tfc.touched || tfc.dirty)">
+            <span *ngIf="tfc.errors.required">this field is mandatory</span>
+            <span *ngIf="tfc.errors.min">atleast 1 is expected</span>
+            <span *ngIf="tfc.errors.max">atmost 50 is expected</span>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Rate : </label>
+            <input type="number" class="form-control" formControlName="rate" />
+        </div>
+        <div class="alert alert-danger" *ngIf="rfc.invalid && (rfc.touched || rfc.dirty)">
+            <span *ngIf="rfc.errors.required">this field is mandatory</span>
+            <span *ngIf="rfc.errors.min">atleast 1 is expected</span>
+            <span *ngIf="rfc.errors.max">atmost 10 is expected</span>
+        </div>
+
+        <button class="btn btn-primary btn-block p-2 mt-4" [disabled]="loanForm.invalid">Compute</button>
+    </form>
+    
+    <div class="mt-4" *ngIf="loan.principle != null && loan.time != null && loan.rate != null">
+        <p><strong>Simple Interest : {{ loan.interest | number : '3.2-2' }} </strong></p>
+        <p><strong>Amount To be Paid : {{ loan.amount | number : '3.2-2'}} </strong></p>
+    </div>
+</section>

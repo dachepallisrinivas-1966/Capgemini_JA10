@@ -1,0 +1,25 @@
+<section>
+    <h3>Loan View</h3>
+    <table class="table table-bordered" *ngIf="loan">
+        <tr>
+            <th class="p-4">Principle</th>
+            <td>{{loan.principle}}</td>
+        </tr>
+        <tr>
+            <th class="p-4">Time</th>
+            <td>{{loan.time}}</td>
+        </tr>
+        <tr>
+            <th class="p-4">Rate</th>
+            <td>{{loan.rate}}</td>
+        </tr>
+        <tr>
+            <th class="p-4">Interest</th>
+            <td>{{loan.interest}}</td>
+        </tr>
+        <tr>
+            <th class="p-4">Amount</th>
+            <td>{{loan.amount}}</td>
+        </tr>
+    </table>
+</section>

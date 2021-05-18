@@ -951,13 +951,13 @@ Angular -  SPA Javascript Framework
     -------------------------------------
 
     1) uppercase
-    2) LowerCasePipe
-    3) TitleCasePipe
-    4) DecimalPipe
-    5) PercentPipe
-    6) DatePipe
-    7) JsonPipe
-    8) SlicePipe
+    2) lowercase
+    3) titlecase
+    4) decimal
+    5) percent
+    6) date
+    7) json
+    8) slice
     9) currency
     
     Angular Forms 
@@ -990,6 +990,43 @@ Angular -  SPA Javascript Framework
         bussiness logic. 
 
 
+	component-to-component communication:
+    =====================================
+
+	@Input()	: to create an attribute    (in parent-to-child data flow)
+	@Output()	: to emit an event	    (in child-to-parent data flow)
+
+
+    Promise: (javascript)
+    =====================
+    The Promise object represents the eventual completion (or failure) of an asynchronous 
+    operation and its resulting value.
+
+    Observer: (Angular)
+    ===================
+    Observables provide support for passing messages between parts of your application. They are 
+    used frequently in Angular and are a technique for event handling, asynchronous programming.
+
+    The observer pattern is a software design pattern in which an object, called the subject, 
+    maintains a list of its dependents, called observers, and notifies them automatically 
+    of state changes.
+
+    Promise vs Observable: (important)
+    ==================================
+            Observables	                                                Promises
+            -----------                                                 --------
+    1)  Emit multiple values over a period of time.	      Emit a single value at a time.
+    2)  Are lazy: they’re not executed until we           Are not lazy: execute immediately after 
+        subscribe to them using the subscribe()           creation. 
+        method.	
+    3)  Have subscriptions that are cancellable           Are not cancellable.
+        using the unsubscribe() method, which stops 
+        the listener from receiving further values.	
+    4)  Provide the map for forEach, filter, reduce,      Don’t provide any operations.
+        retry, and retryWhen operators.	 (rxJs)
+    5)  Deliver errors to the subscribers.	              Push errors to the child promises.
+
+
     Routing
     -----------------------------------
 
@@ -999,7 +1036,7 @@ Angular -  SPA Javascript Framework
             
             Route
                     path:''
-                    compoennt:
+                    component:
 
         Router      navigate programatically.
            
@@ -1007,7 +1044,7 @@ Angular -  SPA Javascript Framework
                     always gives the current detials of the route.
 
                         current route path
-                        params
+                        route params
                         queryParams
 
         routeLink   use on 'a' elements to hold the path
@@ -1023,7 +1060,7 @@ Angular -  SPA Javascript Framework
         setInterval
 
         Observable  uses call back machanisim
-        to communicate witht eh foreground task.
+        to communicate with the foreground task.
 
         let job = (observer) => {
             .................

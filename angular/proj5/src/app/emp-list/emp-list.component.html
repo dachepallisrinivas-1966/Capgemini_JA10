@@ -1,0 +1,36 @@
+<h3>Employee List</h3>
+<app-msgbox *ngIf="!err && !emps">
+    <strong>loading ... please wait ...</strong>
+</app-msgbox>
+
+<app-msgbox *ngIf="err" [isError]="true">
+    <strong>{{ err }} </strong>
+</app-msgbox>
+
+<table class="table table-bordered table-hover" *ngIf="emps">
+    <thead>
+        <tr>
+            <th>Employee ID</th>
+            <th>Full Name</th>
+            <th>Basic Salary</th>
+            <th>Join Date</th>
+            <th>Department Name</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let e of emps">
+            <td>{{ e.empId }} </td>
+            <td>{{ e.fullName }} </td>
+            <td>{{ e.basicSalary }} </td>
+            <td>{{ e.joinDate }} </td>
+            <td>{{ e.deptName }} </td>
+            <td>{{ e.mobile }} </td>
+            <td>{{ e.email }} </td>
+            <td><button class="btn btn-sm btn-danger" (click)="delete(e.empId)">Delete</button></td>
+            <td><a class="btn btn-sm btn-info" routerLink="/emps/edit/{{e.empId}}">Edit</a></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,347 @@
+Problem Statement
+-----------------------------------------------------------------------
+To create an application for ABC-Electronic Smart Customer Service.
+
+The ABC Electronics is looking for the smart after sales services , In this 
+Regard we proposed the solution 
+Client can book complaint through Online Complaint Portal(OCP),
+after registration of complaint user will get a unique complaint number along with following details
+The maximum date to resolve the complaint.
+Complaint Status (Open).
+And the allocated engineer details.
+The User can see all the complaints made so far along with newly registered complaint . Sorted by Date of Complaint made.
+
+
+High Level Requirements
+-----------------------------------------------------------------------
+1. Authentication Module        
+    r1) client registration
+    r2) engineer registration
+    r3) client & engineer login
+    r4) logout
+2. Client Complaint Module
+    r5) Book A Complaint
+    r6) Track Complaints
+3. Engineer Complaint Module
+    r7) Filter & View Complaints
+    r8) Close Complaint
+
+Authentication Module - Low Level Requirements
+===========================================================================
+
+r1) client registration
+------------------------------------------------
+    UI
+    ---
+        1. user should arive at client registration page by clicking on 
+           "Register As Client" from Home Page.
+        2. "Client Registration" Page must have a form to accept the below details.
+            a. firstName
+            b. lastName
+            c. password
+            d. confirmPassword
+            e. doorNumber, city, pin (belong to address)
+            f. phone
+            g. email
+        3. Once the form is submitted, a POST Request must be raised to 
+                "register/client" with the submitted details.
+            a. firstName
+            b. lastName
+            c. password
+            d. address
+            e. phone
+            f. email
+        4. The response should bring the saved client record along with the auto-generated clientId, as below:
+            a. clientId
+            b. firstName
+            c. lastName
+            e. address
+            f. phone
+            g. email
+        5. Home page must appear with a message 
+                "You are registered successfully as a client with #id"
+
+
+    Backend
+    --------
+        1. should recieve a POST request with the above mentioned client details on the 
+        end point "register/client"
+        2. should run validations and if invalid, raise an exception
+        3. if valid, 
+            a) should persist client details in the database.
+                a. clientId
+                b. firstName
+                c. lastName               
+                d. doorNumber, city, pincode (address)
+                e. phone
+                f. email
+            b) should persist user details in the database.
+                 a. userid
+                 b. email
+                 c. password
+                 d. role = "CLIENT"
+            c) respond with "201-Created" status and the recorded client details having the auto-generated clientId.
+
+r2) engineer registration
+------------------------------------------------
+    UI
+    ----
+        1. engineer should arive at "Engineer Registration" page by clicking on "Register As Engineer" from Home Page.
+        2. "Engineer Registration" Page must have a form to accept the below details.
+            a. name
+            c. password
+            d. confirmPassword
+            f. phone
+            g. email
+        3. Once the form is submitted, a POST Request must be raised to 
+           "register/engineer" with the submitted details.
+            a. name
+            b. password
+            c. phone
+            d. email
+        4. The response should bring the saved engineer record along with the auto-generated engineerId.
+            a. engineerId
+            b. name
+            c. password
+            d. phone
+            e. email
+        5. Home page must appear with a message 
+            "You are registered successfully as an engineer with #id"
+
+
+    Backend
+    ------------
+        1. should recieve a POST request with the above mentioned client details on the 
+        end point "register/engineer"
+        2. should run validations and if invalid, raise an exception
+        3. if valid, 
+            a) should persist client details in the database.
+                a. name
+            b) shoudl persist user details in the database.
+                 a. userid
+                 b. email
+                 c. password
+                 d. role = "ENGINEER"
+            c) respond with "OK" status and the recorded client details having the auto-generated engineerId.        
+
+r3) client & engineer login
+-------------------------------------------------------
+    UI
+        1. client / engineer should arrive at "Login Page" by clicking on 
+           "Login" link from Home Page.
+        2. "Login Page" must have a form (template driven form) to accept the following details.
+            a. email
+            b. password
+        3. Once the form is submitted, a POST request must be raised to "/login" with the submitted details.   
+        4. UI shall reveive a response with
+            a. status=200
+                1) send a get request to /users/email/{emailid} 
+                2) receieve the user details and store it in localstorage.
+                3) if the user.role=='client' , client dashboard page must appear or else engeneer dashboard page must appear.
+            or 
+            b. status=401
+                    an error message indicating 'invalid credits' must appear on login page.
+    Backend
+        1. should recieve a POST request with the above mentioned login details on the end point "/login"
+        2. should run validations and if invalid, raise an exception
+        3. should compare the password againt database and if matching shall respond with
+            the status '200-ok' else should respond with status '401-unauthorized'.
+        
+        4. should also receive a get request to /users/email/{emailId}
+        5. retrieve the user details as below and respond:
+            a) userId
+            b) emailId
+            c) role
+ 
+r4) logout     
+----------------------------------------------------------------------   
+    UI
+    ---
+        1. client / engineer can come out of the application by clicking on "Logout"
+           link from the Home Page.
+        2. once logout is clicked, the localstorage must be cleared and 
+            home page must appear.
+    Backend
+        There is no code here.
+    
+
+Client Complaint Module - Low Level Requirements
+===========================================================================
+
+pre required state:
+    the client is already logged in.
+    and is in Client Dashboard
+
+r5) Book A Complaint        
+----------------------------------------------------------------------
+    UI
+        1. client should arive at "Book Complaint Page" by clicking on 
+           "Book A Complaint" from Client Dashboard.
+        2. "Book A Complaint" Page must have a form to accept the below details.
+            a. productSerialNumber
+            b. complaintDescription
+
+        3. once the form is submitted a POST request must be raised to "/complaints"
+           with the following details.
+            a) clientId of the currently logged in client
+            b) complaintDate as system date
+            c) productSerialNumber
+            d) complaintDescription
+            
+
+        4. The response should bring the saved complaint record along with the       
+           auto-generated complaintId.
+        5. Client Dashboard page must appear with a message 
+            "Your complaint has been registered successfully with #id" 
+            
+    Backend            
+        1. should receive a POST request with the above mentioned complaint details on the 
+           end point "/complaints"
+        2. should run validations and if invalid, raise an exception.
+        3. if valid, should persist in the database and respond with "201-Created" status 
+           and the recorded complaint details having the auto-generated complaintId.
+
+r6) Track Complaints
+    UI
+        1. client should arive at "Track Complaints Page" by clicking on 
+           "Track Complaints" from Client Dashboad Page.
+        2. At the time of page load a GET must be raised to 
+           "/clients/{clientId}/complaints".
+        4. The response should bring the all complaints with the below details.
+
+            a) complaintDate
+            b) productSerialNumber
+            c) complaintDescription
+            d) status
+            e) remarks
+
+    Backend            
+        1. should receive a GET request to 
+           end point "/clients/{clientId}/complaints"
+        2. should run validations and if invalid, raise InvalidComplaintException.
+        3. if valid, should retrieve data from the database and respond with "OK" status and the 
+           complaint details as below.
+
+            a) complaintDate
+            b) productSerialNumber
+            c) complaintDescription
+            d) status
+            e) remarks
+
+
+3. Engineer Complaint Module
+=======================================================================
+r7) Filter & View Complaints
+    UI
+        1. As the engineer arive at dashboard, there should be form accepting below details.
+            a) a drop down of the following fields 
+                    i) complaintId
+                   ii) customerName
+                  iii) phone
+                   iv) complaintDate
+                    v) status
+            b) based on the selected field, we should display 
+                a label, and an input field (of the suitable type)
+                and a "Search" button
+            c) when the user clicked on "Search" button, the field and the value must be
+                sent as a part of the GET request raised to the below end point
+
+                /complaints/:field/:value
+
+        2. once response is received, the response should bring an array of complaints.
+        3. display this array in a tabular form on the same page along with 
+            "View Details" button for each complaint.
+
+    Backend
+        1. should recieve a GET request on the end point 
+           /complaints/{field}/{value}
+        2. should return the list of complaints.
+        
+r8) Close Complaint
+    UI
+        1. When the "View Details" button is clicked, "Complaint Details" page must appear.
+        2. at the time of "Complaint Details" page load, two GET requests must be raised, 
+            one for complaint/complaintId 
+            and other for client/clientId end points.
+        3. The received responses should be populated such that the complaint details page
+            has the following content.
+
+            a) complaint details
+                  i) complaintId
+                 ii) productSerialNumber
+                iii) compliantDate
+                 
+            b) client detais
+                i) clientId
+                ii) firstName
+                iii)lastName               
+                iv) address (doorNumber, city, pincode)
+                v) phone
+                vi) email
+
+            c) a form having 
+                i) a large text box for remarks
+                ii) a button labelled "Close Complaint"
+        4. once the "Close Complaint" button is clicked a PATCH request must be raised 
+           to the end point complaint/:complaintId/:remarks.
+        5. once the success response is received the engineer dashboard must appear.
+
+    Backend
+        1. should receive a GET request on the end point
+            complaints/{complaintId} and return the below complaint details .
+             i) complaintId
+            ii) productSerialNumber
+            iii) compliantDate
+        3. should receive a GET request on the end point
+            client/{clientId} and return the below client details.
+            i) clientId
+            ii) firstName
+            iii)lastName               
+            iv) address (doorNumber, city, pincode)
+            v) phone
+            vi) email
+        4. should receive a PATCH request on the end point
+            complaints/{complaintId}/{remarks}
+
+
+Site Map (components)
+===========================================================================
+AppComponent
+    |_  HomeComponent   (Links to RCC, REC, Login)
+            |_  RegisterClientComponent
+            |_  RegisterEngineerComponent
+            |_  LoginComponent
+    |_ ClientDashboardComponent (Links to BCC, TCC, Logout)
+          |_ BookComplaintComponent
+          |_ TrackComplaintComponent
+    |_ EngineerDashboardComponent (Links to FAVCC, CCC)
+          |_ FilterAndViewComplaintComponent
+          |_ CloseComplaintComponent
+
+ng new abc-electronics-ui
+cd abc-electronics-ui
+npm install bootstrap --save
+ng g c home --skipTests
+ng g c RegisterClient --skipTests
+ng g c RegisterEngineer --skipTests
+ng g c Login --skipTests
+ng g c ClientDashboard --skipTests
+ng g c BookComplaint --skipTests
+ng g c TrackComplaint --skipTests
+ng g c EngineerDashboard --skipTests
+ng g c FilterAndViewComplaint --skipTests
+ng g c CloseComplaint --skipTests
+
+ng g interface model/client
+ng g interface model/engineer
+ng g interface model/complaint
+
+ng g service service/client
+ng g service service/engineer
+ng g service service/complaint
+
+
+1. create all components, services, models
+2. create routes in app-routing.module.ts
+3. create services - client.service.ts, complaint.service.ts
+4. create register-client.component.html

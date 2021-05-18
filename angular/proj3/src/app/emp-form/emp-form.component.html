@@ -1,0 +1,62 @@
+<section class="container-fluid p-4 col-sm-6">
+    <form class="form" (ngSubmit)="handleSubmit()" [formGroup]="empForm">
+        <div class="form-group">
+            <label class="form-label">Name : </label>
+            <input type="text" class="form-control" formControlName="name" />
+        </div>
+        <div class="alert alert-danger" *ngIf="namefc.invalid && (namefc.touched || namefc.dirty)">
+            <span *ngIf="namefc.errors.required">name is mandatory</span>
+        </div>
+
+        <div>
+            <label class="form-label">Gender: </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-control form-check-input" type="radio" formControlName="gender" />
+            <label class="form-check-label">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-control form-check-input" type="radio" formControlName="gender" />
+            <label class="form-check-label">Female</label>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Joined Date : </label>
+            <input type="date" class="form-control" formControlName="dateJoined" />
+        </div>
+
+        <div>
+            <label class="form-label">Marital Status: </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="isMarried">
+            <label class="form-check-label">
+                isMarried?
+            </label>
+        </div>
+
+        <div>
+            <label class="form-label">Qualification: </label>
+        </div>
+        <select class="form-select">
+            <option selected>Degree</option>
+            <option value="1">PG</option>
+            <option value="2">Under Graduate</option>
+            <option value="3">Other</option>
+        </select>
+
+        <div class="form-group">
+            <label class="form-label">Basic Salary : </label>
+            <input type="number" class="form-control" formControlName="basicSalary" />
+        </div>
+        <button class="btn btn-primary btn-block p-2 mt-4" [disabled]="empForm.invalid">Compute</button>
+    </form>
+    
+    <!--<div class="mt-4" *ngIf="loan.principle != null && loan.time != null && loan.rate != null">
+        <p><strong>Simple Interest : {{ loan.interest | number : '3.2-2' }} </strong></p>
+        <p><strong>Amount To be Paid : {{ loan.amount | number : '3.2-2'}} </strong></p>
+    </div> 
+
+    </form>-->
+    
+</section>

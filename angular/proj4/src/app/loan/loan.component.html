@@ -1,0 +1,6 @@
+<section class="container-fluid p-2">
+    <div class="row">
+        <app-loan-form class="col-sm-6" (loanSubmit)="handleLoanSubmit($event)"></app-loan-form>
+        <app-loan-view class="col-sm-6" [loan]="loan"></app-loan-view>
+    </div>
+</section>

@@ -8,16 +8,22 @@ import { LoanService } from '../service/loan.service';
   styleUrls: ['./loan-form.component.css']
 })
 export class LoanFormComponent implements OnInit {
-  
-  loan : Loan;
 
-  constructor(private loanService : LoanService) { 
-    this.loan = new Loan();
+  loan: Loan;
+
+  constructor(private loanService: LoanService) {
+    this.loan = {
+      principle: null,
+      time: null,
+      rate: null,
+      interest: null,
+      amount: null
+    };
   }
 
   ngOnInit(): void {
   }
-  
+
   handleSubmit() {
     let loan = this.loanService.compute(this.loan);
     //alert(JSON.stringify(loan));

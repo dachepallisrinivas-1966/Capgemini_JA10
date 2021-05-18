@@ -3,29 +3,27 @@
         <div class="form-group col-sm-4 mx-auto">
             <label>Principle : </label>
             <input type="number" name="p" class="form-control" [(ngModel)]="loan.principle"
-             required  min="1000" max="50000" #p="ngModel" />
+             required  #p="ngModel" />
         </div>
         <div class="alert alert-danger col-sm-4 mx-auto" *ngIf="p.invalid && (p.touched || p.dirty)">
             <span *ngIf="p.errors.required">mandatory field</span>
-            <span *ngIf="p.errors?.min">above 1000 is allowed</span>
-            <span *ngIf="p.errors?.max">below 50000 is allowed</span>
         </div>
 
         <div class="form-group col-sm-4 mx-auto">
             <label>Time : </label>
             <input type="number" name="t" class="form-control" [(ngModel)]="loan.time" 
-             required min="1" max="10" #t="ngModel" />
+             required #t="ngModel" />
         </div>
         <div class="form-group col-sm-4 mx-auto">
             <label>Rate of interest : </label>
             <input type="number" name="r" class="form-control" [(ngModel)]="loan.rate"
-            required min="1" max="20" #r="ngModel" />
+            required #r="ngModel" />
         </div>
         <div class="form-group col-sm-1 mx-auto mt-4">
             <button class="btn btn-primary btn-block" [disabled]="f.invalid">Compute</button>
         </div>
     </form>
-    <div class="col-sm-4 mx-auto mt-4" *ngIf="loan.interest != null && loan.amount != null">
+    <div class="col-sm-4 mx-auto mt-4" *ngIf="loan.principle != 0 && loan.time != 0 && loan.interest != 0">
         <p><strong>Simple Interest : {{ loan.interest | number : '3.2-2' }}  </strong></p>
         <p><strong>Amount To be Paid : {{ loan.amount | number : '3.2-2'}}   </strong></p>
     </div>

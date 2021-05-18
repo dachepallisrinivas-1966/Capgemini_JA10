@@ -1,0 +1,65 @@
+<div class="col-sm-6 mx-auto">
+    <h3>{{ isEditing ? "Edit" : "New"}} Employee</h3>
+    
+    <form class="form" [formGroup]="empForm" (ngSubmit)="handleSubmit()">
+        <div class="form-group">
+            <label class="form-control-label">Employee Id:</label>
+            <input type="number" formControlName="empId" class="form-control" />   
+            <!-- <div class="alert alert-danger" *ngIf="empIdfc.invalid && (empIdfc.touched || empIdfc.dirty)">
+                <span *ngIf="empIdfc.errors.required">This field is mandate</span>
+            </div> -->
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Full Name:</label>
+            <input type="text" formControlName="fullName" class="form-control" />
+            <div class="alert alert-danger" *ngIf="fullNamefc.invalid && (fullNamefc.touched || fullNamefc.dirty)">
+                <span *ngIf="fullNamefc.errors.required">This field is mandate</span>
+                <span *ngIf="fullNamefc.errors.minLength">Minimum 3 characters expected</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Basic Salary :</label>
+            <input type="text" formControlName="basicSalary" class="form-control" />
+            <div class="alert alert-danger" *ngIf="basicSalaryfc.invalid && (basicSalaryfc.touched || fullNamefc.dirty)">
+                <span *ngIf="basicSalaryfc.errors.required">This field is mandate</span>
+                <span *ngIf="basicSalaryfc.errors.min">Minimum 1000 is expected</span>
+                <span *ngIf="basicSalaryfc.errors.max">Maximum 50000 is expected</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Join Date :</label>
+            <input type="date" formControlName="joinDate" class="form-control" />
+            <div class="alert alert-danger" *ngIf="this.joinDatefc.invalid && (this.joinDatefc.touched || this.joinDatefc.dirty)">
+                <span *ngIf="joinDatefc.errors.required">This field is mandate</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Department Name  :</label>
+            <select formControlName="deptName" class="form-control">
+                <option *ngFor="let d of depts" [value]="d">
+                    {{d}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Mobile :</label>
+            <input type="text" formControlName="mobile" class="form-control" />
+            <div class="alert alert-danger" *ngIf="this.mobilefc.invalid && (this.mobilefc.touched || this.mobilefc.dirty)">
+                <span *ngIf="mobilefc.errors.required">This field is mandate</span>
+                <span *ngIf="mobilefc.errors.pattern">Must contain 10 digits</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Email :</label>
+            <input type="email" formControlName="email" class="form-control" />
+            <div class="alert alert-danger" *ngIf="this.emailfc.invalid && (this.emailfc.touched || this.emailfc.dirty)">
+                <span *ngIf="emailfc.errors.required">This field is mandate</span>
+            </div>
+        </div>
+        
+        <button class="btn btn-block btn-primary" [disabled]="empForm.invalid">
+            Save
+        </button>
+    </form>
+</div>
+
